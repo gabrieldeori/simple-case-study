@@ -50,9 +50,14 @@ async function getZodiac(date, language) {
   return zodiacSign;
 }
 
+function updateResultField(sign) {
+  const signResult = document.getElementById("signResult");
+  console.log(signResult);
+}
 
 async function getDateFromInput() {
   const dateInput = document.getElementById("dataNascimento");
+
   await dateInput.addEventListener('change', async ({ target: { value } }) => {
     if (value != "") {
       const splitDate = value.split('-');

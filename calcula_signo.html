@@ -8,6 +8,8 @@
   <title>Document</title>
 </head>
 <body>
+  <canvas id="myCanvas"></canvas>
+  </canvas>
   <main>
     <section>
       <form method="post">
@@ -15,7 +17,7 @@
           <label for="dataNascimento">Insira data de nascimento</label>
           <input type="date" name="dataNascimento" id="dataNascimento">
         </div>
-        <div class="sign-result">
+        <div class="sign-result" id="signResult">
           <h3>♉ Touro ♉</h3>
           <p>05-21 até 04-21</p>
           <p>Ametista</p>
@@ -24,6 +26,8 @@
       </form>
     </section>
   </main>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="script.js"></script>
+  <script src="stellarium.js"></script>
 </body>
 </html>
