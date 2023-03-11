@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+
+  --primary-color-lighter: #eee;
+  --secondary-color-darker-transparent: #639;
+  --primary-background-translucid: rgba(43, 12, 74, 0.521);
+}
+
+body {
+  align-items: center;
+  background:
+    linear-gradient(217deg, rgba(112, 65, 145, 0.8), rgba(107, 64, 64, 0.225) 70.71%),
+    linear-gradient(127deg, rgba(20, 3, 42, 0.8), rgba(174, 0, 255, 0.378) 70.71%),
+    linear-gradient(336deg, rgba(34, 6, 61, 0.8), rgba(3, 255, 234, 0.479) 70.71%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: auto;
+  z-index: -2;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: var(--primary-background-translucid);
+  margin-bottom: 2rem;
+}
+
+section {
+  margin-top: 2.5rem;
+}
+
+article {
+  align-items: center;
+  background-color: #fffc;
+  backdrop-filter: 0.15rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+
+div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+a {
+  color: var(--primary-background-translucid);
+  text-decoration: none;
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.preview-card-image {
+  width: 75%;
+}
