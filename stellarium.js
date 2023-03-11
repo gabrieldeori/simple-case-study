@@ -1,5 +1,5 @@
 var config = {
-  particleCount: 500,
+  particleCount: 50,
   particleSize: 0.2,
   particleSpeed: 1,
   particleColor: '#fff',

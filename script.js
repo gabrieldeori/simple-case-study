@@ -51,8 +51,17 @@ async function getZodiac(date, language) {
 }
 
 function updateResultField(sign) {
-  const signResult = document.getElementById("signResult");
-  console.log(signResult);
+  const elements = ["fogo", "terra", "ar", "água"];
+  document.getElementById("signResult").classList.remove("hidden");
+  const title = document.getElementById("resultTitle");
+  const data = document.getElementById("resultData");
+  const pedra = document.getElementById("resultPedra");
+  const elemento = document.getElementById("resultElemento");
+
+  title.innerText = `${sign.symbol} ${sign.name} ${sign.symbol}`;
+  data.innerText = `Formato (Mês-Dia) ${sign.dateMin} até ${sign.dateMax}`;
+  pedra.innerText = `${sign.stone}`;
+  elemento.innerText = `${elements[sign.element]}`;
 }
 
 async function getDateFromInput() {
@@ -64,6 +73,7 @@ async function getDateFromInput() {
       const dMDate = `${splitDate[1]}-${splitDate[2]}`;
       const clientZodiacSign = await getZodiac(dMDate, PTBR);
       console.log(clientZodiacSign);
+      updateResultField(clientZodiacSign);
     }
   });
 }

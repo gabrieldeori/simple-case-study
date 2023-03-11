@@ -5,6 +5,7 @@
 
   --primary-color-lighter: #eee;
   --secondary-color-darker-transparent: #6398;
+  --primary-background-translucid: rgba(43, 12, 74, 0.521);
 }
 
 body {
@@ -21,6 +22,10 @@ body {
   z-index: -2;
 }
 
+section {
+  margin-top: 2.5rem;
+}
+
 div {
   align-items: center;
   display: flex;
@@ -29,12 +34,17 @@ div {
 }
 
 form {
-  background-color: #fff1;
+  background-color: var(--primary-background-translucid);
   backdrop-filter: blur(0.1rem);
   border-radius: 1rem;
+  color: var(--primary-color-lighter);
   display: flex;
   flex-direction: column;
   padding: 1rem;
+}
+
+form label {
+  font-size: 1.5rem;
 }
 
 input {
@@ -44,6 +54,7 @@ input {
   border: none;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
+  margin-top: 2rem;
 }
 
 .form-input {
@@ -56,4 +67,18 @@ input {
   height: 100vh;
   width: 100vw;
   z-index: -1;
+}
+
+.sign-result {
+  background-color: var(--primary-background-translucid);
+  backdrop-filter: blur(0.2rem);
+  border-radius: 1rem;
+  color: var(--primary-color-lighter);
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.hidden {
+  display: none;
 }
