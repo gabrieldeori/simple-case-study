@@ -1,6 +1,6 @@
 <?php
-  function autoload($nomeClass) {
-    $dir = __DIR__ . '/exautoload/' . $nomeClass . '.php';
+  function autoload($className) {
+    $dir = __DIR__ . '/exautoload/' . $className . '.php';
     $dir = str_replace("\\", DIRECTORY_SEPARATOR, $dir);
     if (is_file($dir)) {
       require_once($dir);
