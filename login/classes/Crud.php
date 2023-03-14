@@ -16,7 +16,7 @@
     }
 
     public function findByEmail($email){
-      $sql = "SELECT * FROM usuarios WHERE email=? LIMIT 1";
+      $sql = "SELECT * FROM $this->tabela WHERE email=? LIMIT 1";
       $sql = DB::prepare($sql);
       $sql->execute(array(($email)));
       $usuario = $sql->fetch();
@@ -24,7 +24,7 @@
     }
 
     public function findBy($column, $condition){
-      $sql = "SELECT * FROM usuarios WHERE $column=? LIMIT 1";
+      $sql = "SELECT * FROM $this->tabela WHERE $column=? LIMIT 1";
       $sql = DB::prepare($sql);
       $sql->execute(array(($condition)));
       $usuario = $sql->fetch();
