@@ -2,6 +2,10 @@
   require_once('classes/config.php');
   require_once('autoload.php');
   require_once('utils/validateFields.php');
+  require_once("templates/basic_input.php");
+
+  $nome = "";
+  $email = "";
 
   $fieldsResponse = validateEmptyFields(['nome', 'email', 'senha', 'repete_senha']);
   if (isset($fieldsResponse[ERROR])) {
@@ -37,21 +41,10 @@
   <form method="POST">
     <h1>Cadastrar</h1>
 
-    <?php include("components/general_error.php")?>
-
-    <div class="input-group">
-      <img class="input-icon" src="img/id-card.png" alt="">
-      <input
-        <?php if(isset($erro_geral) or isset($usuario->erro['erro_nome'])) { echo "class=\"erro-input\""; }?>
-        <?php if(isset($_POST['nome'])) { echo "value=\"".$_POST['nome']."\""; }?>
-        type="text" name="nome" id="nome" placeholder="Digite seu nome..." required
-      >
-      <?php
-          if(isset($usuario->erro['erro_nome'])) {
-            echo "<div class=\"erro\">". $usuario->erro['erro_nome'] . "</div>";
-          }
-        ?>
-      </div>
+    <?php include("templates/general_error.php")?>
+    <?php
+      basicInput('nome', 'text', 'Digite seu nome', 'src/img/id-card.png', $nome, true);
+    ?>
       <div class="input-group">
         <img class="input-icon" src="img/user.png" alt="">
         <input
