@@ -69,7 +69,7 @@
       }
 
       if($this->senha !== $this->repete_senha) {
-        $this->erro["erro_repete"] = "Senhas não correspondem!";
+        $this->erro["erro_repete_senha"] = "Senhas não correspondem!";
       }
     }
 
