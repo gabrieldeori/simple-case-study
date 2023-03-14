@@ -1,0 +1,166 @@
+* {
+  box-sizing: border-box;
+
+  --lightblue-1: #00c3ff;
+  --lightblue-2: #038bb4;
+  --alert-1: #c82a2a;
+  --success-1: #2ac874;
+}
+
+body {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  max-width: 25rem;
+  padding: 4rem 2rem 2rem;
+  background-color: white;
+  border-radius: 3rem;
+  box-shadow: 0 0 2rem #bebebe;
+}
+
+h2 {
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+  font-weight: 900;
+}
+
+input {
+  width: 95%;
+  height: 4rem;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #cccccc;
+  margin-bottom: 1.5rem;
+  padding-left: 20%;
+}
+
+input:focus {
+  outline-color: var(--lightblue-1);
+}
+
+.btn-blue {
+  width: 90%;
+  margin: 1rem 0 1rem 0;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: var(--lightblue-1);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  transition: 0.5s ease;
+}
+
+.btn-blue:hover {
+  background-color: var(--lightblue-2);
+}
+
+a {
+  text-decoration: none;
+  margin-top: 0.8rem;
+  margin-bottom: 1.6rem;
+  color: black;
+}
+
+a:hover {
+  color: var(--lightblue-1);
+}
+
+.link {
+  color: var(--lightblue-1);
+  text-decoration: underline;
+}
+
+.input-group {
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.input-icon {
+  translate: -200%;
+  width: 60px;
+  position: absolute;
+}
+
+input[type="checkbox"] {
+  display: inline-block;
+  height: 1rem;
+  width: 5%;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
+
+.input-check-group{
+  display: inline-block;
+  width: 90%;
+}
+
+label {
+  display: inline-block;
+  width: 80%;
+  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  word-wrap: normal;
+}
+
+.erro-geral {
+  background-color: var(--alert-1);
+  font-weight: bold;
+  color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.erro {
+  color: var(--alert-1);
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.erro-input {
+  border: 1px solid var(--alert-1);
+}
+
+.sucesso {
+  background-color: var(--success-1);
+  font-weight: bold;
+  color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.oculto {
+  display: hidden;
+}
