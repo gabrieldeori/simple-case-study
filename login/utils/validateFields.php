@@ -2,28 +2,28 @@
   require_once('utils/charFilter.php');
 
   define ("ERROR", "erro");
-  define ("EMPTY_FIELD", "Campo vazio!");
-  define ("UNDEFINED_FIELD", "Campo indefinido!");
+  define ("EMPTY_FIELD", "Todos campos precisam ser preenchidos!");
 
-  function validateField(string $fieldName) {
+  function validateEmptyField(string $fieldName) {
     if (isset($_POST[$fieldName])) {
       $fieldValue = antiXSite($_POST[$fieldName]);
       
       if (!empty($fieldValue)) {
         return $fieldValue;
       }
-      return [ERROR => EMPTY_FIELD];
-    } else {
-      return [ERROR => UNDEFINED_FIELD];
     }
+    return false;
   }
 
-  function validateAllFields(array $fieldsArray) {
+  function validateEmptyFields(array $fieldsArray) {
     $array_response = [];
     
     for ($count=0; $count < count($fieldsArray); $count++) { 
       $fieldName = $fieldsArray[$count];
-      $response = validateField($fieldName);
+      $response = validateEmptyField($fieldName);
+      if (!$response) {
+        return [ERROR => EMPTY_FIELD];
+      }
       $array_response[$fieldName] = $response;
     }
 
