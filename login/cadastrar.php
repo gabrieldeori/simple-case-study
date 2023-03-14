@@ -5,9 +5,21 @@
 
   $fieldsResponse = validateEmptyFields(['nome', 'email', 'senha', 'repete_senha']);
   if (isset($fieldsResponse[ERROR])) {
-    echo $fieldsResponse[ERROR];
+    $erro_geral = $fieldsResponse[ERROR];
+  } else { 
+    $nome = $fieldsResponse['nome'];
+    $email = $fieldsResponse['email'];
+    $senha = $fieldsResponse['senha'];
+    $repete_senha = $fieldsResponse['repete_senha'];
+    $usuario = new Usuario($nome, $email, $senha);
+    $usuario->set_repete_senha($repete_senha);
+    $usuario->validate_register();
+    $registered = $usuario->register();
+  }
+  if($registered) {
+    header('location: index.php?registered=1');
   } else {
-    print_r($fieldsResponse);
+    $erro_geral = $usuario->erro["erro_geral"];
   }
 ?>
 
@@ -20,10 +32,12 @@
   <link rel="stylesheet" href="./css/estilo.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <title>Cadastrar</title>
-</head>
+</head> 
 <body>
   <form method="POST">
     <h1>Cadastrar</h1>
+
+    <?php include("components/general_error.php")?>
 
     <div class="input-group">
       <img class="input-icon" src="img/id-card.png" alt="">
