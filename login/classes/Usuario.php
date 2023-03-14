@@ -45,8 +45,10 @@
         }
       }
 
-      public function update($id) {
-
+      public function update($token, $id) {
+        $sql = "UPDATE $this->tabela SET token=? WHERE id=?";
+        $sql = DB::prepare($sql);
+        return $sql->execute(array($token, $id));
       }
 
     public function set_repete_senha($repete_senha) {

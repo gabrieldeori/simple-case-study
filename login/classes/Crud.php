@@ -5,7 +5,7 @@
     protected string $tabela;
 
     abstract public function insert();
-    abstract public function update($id);
+    abstract public function update($token, $id);
 
     public function findById($id){
       $sql = "SELECT * FROM $this->tabela WHERE id=?";
