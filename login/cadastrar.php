@@ -29,7 +29,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="stylesheet" href="src/css/estilo.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <title>Cadastrar</title>
 </head>
@@ -43,12 +43,12 @@
       <img class="input-icon" src="img/id-card.png" alt="">
       <input
         <?php if(isset($erro_geral) or isset($usuario->erro['erro_nome'])) { echo "class=\"erro-input\""; }?>
-        <?php if(isset($_POST['nome_completo'])) { echo "value=\"".$_POST['nome_completo']."\""; }?>
-        type="text" name="nome_completo" id="nome_completo" placeholder="Digite seu nome Completo" required
+        <?php if(isset($_POST['nome'])) { echo "value=\"".$_POST['nome']."\""; }?>
+        type="text" name="nome" id="nome" placeholder="Digite seu nome..." required
       >
       <?php
           if(isset($usuario->erro['erro_nome'])) {
-            echo "<div class=\"erro\">$usuario->erro['erro_nome']</div>";
+            echo "<div class=\"erro\">". $usuario->erro['erro_nome'] . "</div>";
           }
         ?>
       </div>
@@ -103,6 +103,7 @@
             echo "<div class=\"erro\">$erro_checkbox</div>";
           }
         ?>
+        </div>
     <button class="btn-blue" type="submit">Cadastrar</button>
     <a href="index.php">Já tenho uma conta</a>
   </form>
