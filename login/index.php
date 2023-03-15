@@ -4,8 +4,6 @@
     require_once('utils/validateFields.php');
     require_once("templates/basic_input.php");
 
-    print_r($_POST);
-
     $email = "";
 
     $fieldsResponse = validateEmptyFields(['email', 'senha']);
