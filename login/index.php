@@ -13,8 +13,14 @@
       $email = $fieldsResponse['email'];
       $senha = $fieldsResponse['senha'];
 
-      $login = new Login();
-      $login->auth($email, $senha);
+      $logged = new Login();
+      $logged->auth($email, $senha);
+
+      if($logged) {
+        header('location: restrita/index.php');
+      } else {
+        $erro_geral = $logged->erro['erro_geral'];
+      }
     }
 ?>
 

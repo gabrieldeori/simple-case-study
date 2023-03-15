@@ -47,7 +47,6 @@ class Login {
 
     $updated = $this->updateLogin($this->token, $email, $criptSenha);
     if ($updated) {
-      header('location: restrita/index.php');
       return true;
     }
     $this->erro["erro_geral"] = "Algo falhou no servidor!";
