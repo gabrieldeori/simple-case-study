@@ -35,6 +35,13 @@ class Login {
     return $sql->fetch(PDO::FETCH_ASSOC); // FETCH COMO MATRIZ ASSOCIATIVA
   }
 
+  private function checkToken($token) {
+    $sql = "SELECT * FROM $this->tabela WHERE token=? LIMIT 1";
+    $sql = DB::prepare($sql);
+    $sql->execute(array($token));
+    return $sql->fetch(PDO::FETCH_ASSOC);
+  }
+
   public function auth($email, $senha) {
     $criptSenha = $this->criptPass($senha);
     $emailRegistered = $this->verifyEmailRegister($email, $criptSenha);
@@ -51,6 +58,19 @@ class Login {
     }
     $this->erro["erro_geral"] = "Algo falhou no servidor!";
     return false;
+  }
+
+
+
+  public function isAuth($token) {
+    $userTokened = $this->checkToken($token);
+    if($userTokened) {
+      $this->nome = $userTokened['nome'];
+      $this->email = $userTokened['email'];
+      return true;
+    } {
+      return false;
+    }
   }
 }
 ?>
