@@ -2,7 +2,7 @@
   class Recuperar extends DB {
     private string $tabela = "usuarios";
     function __construct(
-      private string $email
+      private string $email,
     ) {}
 
     private function emailCheck($email) {
@@ -12,14 +12,27 @@
       return $sql->fetch();
     }
 
-    private function sendEmail ($email) {
+    private function registerToken($token, $email) {
+      $sql = "UPDATE $this->tabela SET recupera_senha=? WHERE email=? LIMIT 1";
+      $sql = DB::prepare($sql);
+      $sql->execute(array($token, $email));
+      return $sql->fetch();
+    }
+
+    private function sendEmail($token, $email) {
       return true;
     }
 
     public function recuperarSenha() {
       $emailExists = $this->emailCheck($this->email);
       if ($emailExists) {
-        $this->sendEmail($this->email);
+        $token = $this->createToken();
+        $tokened = $this->registerToken($token, $this->email);
+
+        if($tokened) {
+          $this->sendEmail($token, $this->email);
+        }
+
         return true;
       } else {
         return false;

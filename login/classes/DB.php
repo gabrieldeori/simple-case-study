@@ -16,6 +16,10 @@
       return self::$pdo;
     }
 
+    protected function createToken() {
+      return sha1(uniqid().date("Y-m-y H-i-s"));
+    }
+
     public static function prepare($sql) {
       return self::instanciar()->prepare($sql);
     }

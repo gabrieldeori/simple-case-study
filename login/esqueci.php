@@ -10,6 +10,7 @@
   } else {
     $email = $fieldsResponse['email'];
     $recuperar = new Recuperar($email);
+    $recuperar->recuperarSenha();
     header('location: recuperar.php');
   }
 ?>
