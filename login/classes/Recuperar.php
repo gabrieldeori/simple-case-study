@@ -1,6 +1,5 @@
 <?php
-  class Recuperar extends DB {
-    private string $tabela = "usuarios";
+  class Recuperar extends Usuario {
     function __construct(
       private string $email,
     ) {}
