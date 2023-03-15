@@ -22,7 +22,7 @@ class Login {
     $sql = DB::prepare($sql);
     $updated = $sql->execute(array($token, $email, $criptSenha));
     if ($updated) {
-      $_SESSION['token'] = $this->token;
+      $_SESSION['TOKEN'] = $this->token;
       return true;
     }
     return false;
