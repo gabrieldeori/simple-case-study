@@ -12,6 +12,9 @@
     } else {
       $email = $fieldsResponse['email'];
       $senha = $fieldsResponse['senha'];
+
+      $login = new Login();
+      $login->auth($email, $senha);
     }
 ?>
 
