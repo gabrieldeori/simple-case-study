@@ -1,6 +1,4 @@
-<?php
-  require('config/conexao.php');
-
+<!--
   if(isset($_POST['email']) && isset($_POST['senha']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
     $email = limparPost($_POST['email']);
     $senha = limparPost($_POST['senha']);
@@ -30,7 +28,9 @@
         $erro_login = "Usuário e/ou senha incorretos!";
       }
   }
-?>
+-->
+
+<?php require("./templates/basic_input.php")?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -38,7 +38,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./css/estilo.css">
+  <link rel="stylesheet" href="src/css/estilo.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <title>Login</title>
 </head>
@@ -55,16 +55,11 @@
          <?php echo $erro_login; ?>
         </div>
     <?php } ?>
-    
 
-    <div class="input-group">
-      <img class="input-icon" src="img/user.png" alt="">
-      <input type="email" name="email" id="email" placeholder="Digite seu email" required>
-    </div>
-    <div class="input-group">
-      <img class="input-icon" src="img/lock.png" alt="">
-      <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
-    </div>
+    <?php
+      basicInput('email', 'email', 'Digite seu email', 'src/img/user.png', '', true);
+      basicInput('senha', 'password', 'Digite sua senha', 'src/img/lock.png', '', true);
+    ?>
     <a href="esqueci.php">Esqueceu a senha?</a>
     <button class="btn-blue" type="submit">Fazer Login</button>
     <a href="cadastrar.php">Ainda não tenho cadastro</a>
