@@ -16,40 +16,40 @@
       public array $erro = []
     ) {}
 
-      public function insert() {
-        $usuario = $this->findByEmail($this->email);
-        if(!$usuario) {
-          $data_cadastro = date('Y-m-d H:i:s');
-          $senha_cripto = sha1($this->senha);
-          $sql = "INSERT INTO $this->tabela VALUES (null,?,?,?,?,?,?,?,?)";
-          $sql=DB::prepare($sql);
-          $registered = $sql->execute(
-            array(
-              $this->nome,
-              $this->email,
-              $senha_cripto,
-              $this->recupera_senha,
-              $this->token,
-              $this->codigo_confirmacao,
-              $this->status,
-              $data_cadastro
-            ));
+    public function insert() {
+      $usuario = $this->findByEmail($this->email);
+      if(!$usuario) {
+        $data_cadastro = date('Y-m-d H:i:s');
+        $senha_cripto = sha1($this->senha);
+        $sql = "INSERT INTO $this->tabela VALUES (null,?,?,?,?,?,?,?,?)";
+        $sql=DB::prepare($sql);
+        $registered = $sql->execute(
+          array(
+            $this->nome,
+            $this->email,
+            $senha_cripto,
+            $this->recupera_senha,
+            $this->token,
+            $this->codigo_confirmacao,
+            $this->status,
+            $data_cadastro
+          ));
 
-          if(!$registered) {
-              $this->erro["erro_geral"] = "Ocorreu um erro interno no banco!";
-              return false;
-            }
-          return $registered;
-        } else {
-          $this->erro["erro_geral"] = "Usuário já cadastrado!";
-        }
+        if(!$registered) {
+            $this->erro["erro_geral"] = "Ocorreu um erro interno no banco!";
+            return false;
+          }
+        return $registered;
+      } else {
+        $this->erro["erro_geral"] = "Usuário já cadastrado!";
       }
+    }
 
-      public function update($token, $id) {
-        $sql = "UPDATE $this->tabela SET token=? WHERE id=?";
-        $sql = DB::prepare($sql);
-        return $sql->execute(array($token, $id));
-      }
+    public function update($token, $id) {
+      $sql = "UPDATE $this->tabela SET token=? WHERE id=?";
+      $sql = DB::prepare($sql);
+      return $sql->execute(array($token, $id));
+    }
 
     public function set_repete_senha($repete_senha) {
       $this->repete_senha = $repete_senha;
@@ -78,6 +78,28 @@
         return $this->insert();
       } else {
         $this->erro["erro_geral"] = "Alguns campos apresentam problemas!";
+        return false;
+      }
+    }
+
+    private function registerToken($token, $email) {
+      $sql = "UPDATE $this->tabela SET codigo_confirmacao=? WHERE email=? LIMIT 1";
+      $sql = DB::prepare($sql);
+      $sql->execute(array($token, $email));
+      return $sql->fetch();
+    }
+
+    private function sendEmail($token, $email) {
+      return true;
+    }
+
+    public function sendConfirmation() {
+      $token = $this->createToken();
+      $tokened = $this->registerToken($token, $this->email);
+      if($tokened) {
+        $this->sendEmail($token, $this->email);
+        return true;
+      } else {
         return false;
       }
     }

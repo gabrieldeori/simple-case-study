@@ -20,7 +20,8 @@
     $usuario->validate_register();
     $registered = $usuario->register();
     if($registered) {
-      header('location: index.php?registered=1');
+      $usuario->sendConfirmation();
+      header('location: obrigado.php');
     } else {
       $erro_geral = $usuario->erro["erro_geral"];
     }
