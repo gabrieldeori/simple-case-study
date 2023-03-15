@@ -1,36 +1,19 @@
-<!--
-  if(isset($_POST['email']) && isset($_POST['senha']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
-    $email = limparPost($_POST['email']);
-    $senha = limparPost($_POST['senha']);
-    $senha_cript = sha1($senha);
+<?php
+    require_once('classes/config.php');
+    require_once('autoload.php');
+    require_once('utils/validateFields.php');
+    require_once("templates/basic_input.php");
 
-    $sql = $pdo->prepare("SELECT * FROM usuarios WHERE email=? AND senha=? LIMIT 1");
-    $sql->execute(array($email, $senha_cript));
+    $email = "";
 
-    $usuario = $sql->fetch(PDO::FETCH_ASSOC); // Matriz associativa | Key Value
-
-    if($usuario) {
-      if($usuario['status'] === "confirmado") {
-        $token = sha1(uniqid().date('d-m-Y-H-i-s'));
-  
-        // Se ele sempre atualizar o token é um problema caso o usuário precise logar em vários locais.
-        $sql = $pdo->prepare("UPDATE usuarios SET token=? WHERE email=? AND senha=?");
-        if($sql->execute(array($token, $email, $senha_cript))) {
-          $_SESSION['TOKEN'] = $token;
-          header('location: restrita.php');
-        } else {
-          $erro_login = "Usuário e/ou senha incorretos!";
-         }
-        } else {
-          $erro_login = "Email não confirmado!";
-        }
-      } else {
-        $erro_login = "Usuário e/ou senha incorretos!";
-      }
-  }
--->
-
-<?php require("./templates/basic_input.php")?>
+    $fieldsResponse = validateEmptyFields(['email', 'senha']);
+    if (isset($fieldsResponse[ERROR])) {
+      $erro_geral = $fieldsResponse[ERROR];
+    } else {
+      $email = $fieldsResponse['email'];
+      $senha = $fieldsResponse['senha'];
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -50,15 +33,15 @@
         <div class="sucesso animate__animated animate__rubberBand">Cadastrado com sucesso!</div>
     <?php } ?>
 
-    <?php if (isset($erro_login)) { ?>
+    <?php if (isset($erro_geral)) { ?>
         <div class="erro-geral animate__animated animate__rubberBand">
-         <?php echo $erro_login; ?>
+         <?php echo $erro_geral; ?>
         </div>
     <?php } ?>
 
     <?php
-      basicInput('email', 'email', 'Digite seu email', 'src/img/user.png', '', true);
-      basicInput('senha', 'password', 'Digite sua senha', 'src/img/lock.png', '', true);
+      basicInput('email', 'email', 'Digite seu email', 'src/img/user.png', $email, false);
+      basicInput('senha', 'password', 'Digite sua senha', 'src/img/lock.png', '', false);
     ?>
     <a href="esqueci.php">Esqueceu a senha?</a>
     <button class="btn-blue" type="submit">Fazer Login</button>
