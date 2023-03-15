@@ -11,6 +11,13 @@
       return sha1($senha);
     }
 
+    private function isConfirmed() {
+      $sql = "SELECT * FROM $this->tabela WHERE email=? AND status=? LIMIT 1";
+      $sql = DB::prepare($sql);
+      $sql->execute(array($this->email, 'Confirmado'));
+      return $sql->fetch(PDO::FETCH_ASSOC);
+    }
+
     private function updateLogin($token, $email, $criptSenha) {
       $sql = "UPDATE $this->tabela SET token=? WHERE email=? AND senha=? LIMIT 1";
       $sql = DB::prepare($sql);
