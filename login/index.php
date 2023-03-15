@@ -1,27 +1,27 @@
 <?php
-    require_once('classes/config.php');
-    require_once('autoload.php');
-    require_once('utils/validateFields.php');
-    require_once("templates/basic_input.php");
+  require_once('classes/config.php');
+  require_once('autoload.php');
+  require_once('utils/validateFields.php');
+  require_once("templates/basic_input.php");
 
-    $email = "";
+  $email = "";
 
-    $fieldsResponse = validateEmptyFields(['email', 'senha']);
-    if (isset($fieldsResponse[ERROR])) {
-      $erro_geral = $fieldsResponse[ERROR];
+  $fieldsResponse = validateEmptyFields(['email', 'senha']);
+  if (isset($fieldsResponse[ERROR])) {
+    $erro_geral = $fieldsResponse[ERROR];
+  } else {
+    $email = $fieldsResponse['email'];
+    $senha = $fieldsResponse['senha'];
+
+    $login = new Login();
+    $logged = $login->auth($email, $senha);
+
+    if($logged) {
+      header('location: restrita/index.php');
     } else {
-      $email = $fieldsResponse['email'];
-      $senha = $fieldsResponse['senha'];
-
-      $login = new Login();
-      $logged = $login->auth($email, $senha);
-
-      if($logged) {
-        header('location: restrita/index.php');
-      } else {
-        $erro_geral = $login->erro['erro_geral'];
-      }
+      $erro_geral = $login->erro['erro_geral'];
     }
+  }
 ?>
 
 <!DOCTYPE html>
