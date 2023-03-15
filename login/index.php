@@ -4,6 +4,8 @@
     require_once('utils/validateFields.php');
     require_once("templates/basic_input.php");
 
+    print_r($_POST);
+
     $email = "";
 
     $fieldsResponse = validateEmptyFields(['email', 'senha']);
@@ -13,13 +15,13 @@
       $email = $fieldsResponse['email'];
       $senha = $fieldsResponse['senha'];
 
-      $logged = new Login();
-      $logged->auth($email, $senha);
+      $login = new Login();
+      $logged = $login->auth($email, $senha);
 
       if($logged) {
         header('location: restrita/index.php');
       } else {
-        $erro_geral = $logged->erro['erro_geral'];
+        $erro_geral = $login->erro['erro_geral'];
       }
     }
 ?>
@@ -56,15 +58,5 @@
     <button class="btn-blue" type="submit">Fazer Login</button>
     <a href="cadastrar.php">Ainda não tenho cadastro</a>
   </form>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-  <?php if (isset($_GET['result']) && $_GET['result'] === 'ok') { ?>
-  <script>
-      setTimeout(() => {
-        // $('.sucesso').addClass('oculto');
-        $('.sucesso').hide(); // JQuery
-      }, 3000);
-  </script>
-  <?php } ?>
 </body>
 </html>
