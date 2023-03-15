@@ -60,8 +60,6 @@ class Login {
     return false;
   }
 
-
-
   public function isAuth($token) {
     $userTokened = $this->checkToken($token);
     if($userTokened) {
