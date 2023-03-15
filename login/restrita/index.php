@@ -1,5 +1,5 @@
 <?php
-  require_once('../class/config.php');
+  require_once('../classes/config.php');
   require_once('../autoload.php');
 
   $token = $_SESSION['TOKEN'];
