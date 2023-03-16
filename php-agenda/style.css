@@ -16,66 +16,22 @@ a {
   text-decoration: none;
 }
 
+form {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .flex-column {
+  display: flex;
   flex-direction: column;
 }
 
 .profile-pic {
   border-radius: 50%;
-  height: 50px;
+  height: 3rem;
   margin: 0;
   padding: 0;
-  width: 50px;
-}
-
-.contacts {
-  background-color: rebeccapurple;
-  padding: 0;
-}
-
-.contact {
-  align-items: center;
-  background-color: #d0d0d0;
-  border: none;
-  border-radius: 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  margin: 0.2rem 0;
-  padding: 0.2rem 0;
-  width: 100%;
-}
-
-.contact .info {
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-}
-
-.contact nav {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 0;
-  margin: 0;
-}
-
-.contact button {
-  background-color: green;
-  border: none;
-  border-radius: 50%;
-  color: white;
-  height: 2rem;
-  margin: 0.1rem;
-  width: 2rem;
-}
-
-.contact .name {
-
-  margin: 0;
-  width: fit-content;
-}
-
-.contact .phone {
-
-  margin: 0;
-  width: fit-content;
+  width: 3rem;
 }
