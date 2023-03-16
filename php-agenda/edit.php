@@ -40,9 +40,9 @@
     </form>
 
     <div class="flex-row">
-        <button class="nice-btn-green" type="submit" disabled>Salvar</button>
-        <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
-      </div>
+      <button class="nice-btn-green" type="submit" disabled>Salvar</button>
+      <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
+    </div>
   </main>
 </body>
 </html>
