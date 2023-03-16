@@ -37,12 +37,12 @@
         <label for="birthdate"><i class="fa-solid fa-cake-candles"></i></label>
         <input class="nice-input" type="date" name="birthdate" id="birthdate" value="1995-05-04">
       </div>
-    
-      <div class="flex-row">
-        <button class="nice-btn-green" type="submit" disabled>Salvar</button>
-        <a href="./index.html"><button class="nice-btn-green">Voltar</button></a>
-      </div>
     </form>
+
+    <div class="flex-row">
+        <button class="nice-btn-green" type="submit" disabled>Salvar</button>
+        <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
+      </div>
   </main>
 </body>
 </html>
