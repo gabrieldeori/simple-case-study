@@ -1,16 +1,18 @@
 * {
   box-sizing: border-box;
   font-family: Helvetica, arial, sans-serif;
+  --light-option-0: #f0f0f0;
+  --lighter-a0: #ffffffa0;
+  --darker-10: #00000010;
+  --greener-a0: #00ff0030;
 }
 
 body {
-  /* background-color: #1f1f1f; */
-  background-color: #f0f0f0;
+  background-color: var(--light-option-0);
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: white;
 }
 
 h1 {

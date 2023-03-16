@@ -4,14 +4,17 @@
 
 .contact {
   align-items: center;
-  background-color: #d0d0d0;
   border: none;
   border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
-  margin: 0.2rem 0;
-  padding: 0.2rem 0;
+  margin: 0.5rem 0;
+  padding: 1rem 0;
   width: 100%;
+}
+
+.contact:hover {
+  background-color: var(--greener-a0);
 }
 
 .preview-profile-pic {
