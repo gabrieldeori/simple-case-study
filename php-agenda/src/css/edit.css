@@ -1,0 +1,30 @@
+.edit {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit .profile-pic {
+  align-self: center;
+  max-width: 180px;
+  margin-bottom: 2rem;
+}
+
+.edit .form-group {
+  display: flex;
+  flex-direction: row wrap;
+  margin-bottom: 2rem;
+}
+
+.edit .form-group label {
+  align-items: top;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+.edit .form-group div input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
