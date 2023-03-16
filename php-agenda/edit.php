@@ -1,3 +1,11 @@
+<?php
+  require('./autoload.php');
+
+  $contact = new Contact();
+  $contact_info = $contact->get();
+  print_r($contact_info);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
