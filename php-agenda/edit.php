@@ -25,25 +25,25 @@
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>
         <div>
-          <input class="nice-input" type="text" name="name" id="name" placeholder="Nome" value="Gabriel" required>
-          <input class="nice-input" type="text" name="surname" id="surname" placeholder="Sobrenome" value="de Oliveira Ribeiro" required>
-          <input class="nice-input" type="text" name="nick" id="nick" placeholder="Apelido" value="Deori">
+          <input class="nice-input" type="text" name="name" id="name" placeholder="Nome">
+          <input class="nice-input" type="text" name="surname" id="surname" placeholder="Sobrenome">
+          <input class="nice-input" type="text" name="nick" id="nick" placeholder="Apelido">
         </div>
       </div>
     
       <div class="form-group">
         <label for="number"><i class="fa-solid fa-phone"></i></label>
-        <input class="nice-input" type="tel" name="number" id="number" placeholder="Celular" value="+5532999999999">
+        <input class="nice-input" type="tel" name="number" id="number" placeholder="Celular">
       </div>
     
       <div class="form-group">
         <label for="email"><i class="fa-solid fa-envelope"></i></label>
-        <input class="nice-input" type="email" name="email" id="email" placeholder="E-mail" value="deori@mail.com">
+        <input class="nice-input" type="email" name="email" id="email" placeholder="E-mail">
       </div>
     
       <div class="form-group">
         <label for="birthdate"><i class="fa-solid fa-cake-candles"></i></label>
-        <input class="nice-input" type="date" name="birthdate" id="birthdate" value="1995-05-04">
+        <input class="nice-input" type="date" name="birthdate" id="birthdate">
       </div>
     </form>
 
