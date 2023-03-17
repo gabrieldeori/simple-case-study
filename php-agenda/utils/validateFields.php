@@ -49,12 +49,20 @@
     return $array_response;
   }
 
-  function validateAnyFields(array $fieldsArray) {
+  function validateAnyField(array $fieldsArray) {
     $array_response = [];
+    $valid = false;
     for ($count=0; $count < count($fieldsArray); $count++) { 
       $fieldName = $fieldsArray[$count];
       $response = validateEachField($fieldName);
-      $array_response[$fieldName] = $response;
+      if ($response) {
+        $array_response[$fieldName] = $response;
+        $valid = true;
+      }
+    }
+
+    if (!$valid) {
+      return false;
     }
     return $array_response;
   }

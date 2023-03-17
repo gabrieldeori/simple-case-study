@@ -1,22 +1,3 @@
-<?php
-  require('./autoload.php');
-  require('./utils/charFilter.php');
-  require('./utils/validateFields.php');
-
-  echo "<pre class=\"developer\">";
-  echo "</pre>";
-
-  $contact = new Contact();
-
-  $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
-  if (isset($validatedFields[ERROR_VAL])) {
-    $contact->setError($validatedFields);
-    echo "<pre class=\"developer\">";
-    print_r($contact);
-    echo "</pre>";
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +12,7 @@
 </head>
 <body>
   <main>
-    <form class="edit" method="POST">
+    <form method="POST" action="process_contact.php" enctype="multipart/form-data">
       <img class="profile-pic" src="src/img/profile.svg" alt="">
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>
@@ -56,12 +37,11 @@
         <label for="birthdate"><i class="fa-solid fa-cake-candles"></i></label>
         <input class="nice-input" type="date" name="birthdate" id="birthdate">
       </div>
+      <div class="flex-row">
+        <button class="nice-btn-green" type="submit">Salvar</button>
+        <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
+      </div>
     </form>
-
-    <div class="flex-row">
-      <button class="nice-btn-green" type="submit" disabled>Salvar</button>
-      <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
-    </div>
   </main>
 </body>
 </html>

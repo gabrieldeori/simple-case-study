@@ -22,15 +22,10 @@
         ];
       }
 
-      public function set($name, $surname, $nick, $email, $number, $birthdate, $photo) {
-        $this->name = 'name';
-        $this->surname = 'surname';
-        $this->nick = 'nick';
-        $this->email = 'email';
-        $this->number = 'number';
-        $this->birthdate = 'birthdate';
-        $this->photo = 'photo';
-        $this->id = 'id';
+      public function set($arrayProp) {
+        foreach ($arrayProp as $key => $value) {
+          $this->$key = $value;
+        }
         return true;
     }
   }
