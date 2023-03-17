@@ -1,4 +1,6 @@
 <?php
+  define('ERROR_CRUD', 'error_crud');
+
   class Crud extends DB {
     protected string $tabela;
     protected string $values;
@@ -15,7 +17,7 @@
         return true;
       }
       return false;
-      $this->error["errorCrud"] = "Não criado!";
+      $this->error[ERROR_CRUD] = "Não criado!";
     }
 
     public function find() {
@@ -27,7 +29,7 @@
         return $finded;
       }
       return false;
-      $this->error["errorCrud"] = "Nada encontrado!";
+      $this->error[ERROR_CRUD] = "Nada encontrado!";
     }
 
     public function update() {
@@ -38,7 +40,7 @@
         return true;
       }
       return false;
-      $this->error["errorCrud"] = "Não atualizado!";
+      $this->error[ERROR_CRUD] = "Não atualizado!";
     }
 
     public function delete() {
@@ -49,12 +51,19 @@
         return true;
       }
       return false;
-      $this->error["errorCrud"] = "Não deletado!";
+      $this->error[ERROR_CRUD] = "Não deletado!";
     }
 
     public function setError($error) {
       $errorKey = array_keys($error)[0];
       $this->error[$errorKey] = $error[$errorKey];
+    }
+
+    public function getError() {
+      if(!empty($this->error)) {
+        return $this->error;
+      }
+      return false;
     }
   }
 ?>

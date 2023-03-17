@@ -1,7 +1,7 @@
 <?php
   require_once('utils/charFilter.php');
 
-  define ("ERROR_VAL", "errorValidate");
+  define ("ERROR_VAL", "error_validate");
   define ("EMPTY_FIELD", "Todos campos precisam ser preenchidos!");
   define ("ATLEAST_FIELD", "Ao menos um campo deve ser preenchido!");
 

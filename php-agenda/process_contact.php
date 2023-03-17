@@ -12,6 +12,7 @@
     $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo']);
     $contact->set($validatedFields);
     $contact->set($validatedOtherFields);
+    $validatedContact = $contact->registerContact();
   }
 ?>
 
