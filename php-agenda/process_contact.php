@@ -1,20 +1,4 @@
-<?php
-  require('./autoload.php');
-  require('./utils/charFilter.php');
-  require('./utils/validateFields.php');
 
-  $contact = new Contact();
-
-  $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
-  if (isset($validatedFields[ERROR_VAL])) {
-    $contact->setError($validatedFields);
-  } else {
-    $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo']);
-    $contact->set($validatedFields);
-    $contact->set($validatedOtherFields);
-    $validatedContact = $contact->registerContact();
-  }
-?>
 
 <head>
   <meta charset="UTF-8">

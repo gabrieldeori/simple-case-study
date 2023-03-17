@@ -1,3 +1,30 @@
+<?php
+  require('./autoload.php');
+  require('./utils/charFilter.php');
+  require('./utils/validateFields.php');
+
+  $contact = new Contact();
+
+  $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
+  if (isset($validatedFields[ERROR_VAL])) {
+    $contact->setError($validatedFields);
+  } else {
+    $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo']);
+    $contact->set($validatedFields);
+    $contact->set($validatedOtherFields);
+    $registeredContact = $contact->registerContact();
+    if (!$registeredContact) {
+      echo "<pre class=\"developer\">";
+      print_r($registeredContact);
+      echo "</pre>";
+    }
+  }
+
+  if($contact->getError()) {
+    print_r($contact->getError());
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +39,7 @@
 </head>
 <body>
   <main>
-    <form method="POST" action="process_contact.php" enctype="multipart/form-data">
+    <form method="POST" enctype="multipart/form-data">
       <img class="profile-pic" src="src/img/profile.svg" alt="">
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>

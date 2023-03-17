@@ -1,6 +1,5 @@
 <?php
   class Contact extends Crud {
-    private $tabela = "contacts";
     private $name = "";
     private $surname = "";
     private $nick = "";
@@ -47,7 +46,7 @@
         $this->error["error_number"] = "Número inválido!";
       }
 
-      if(!empty($this->birthdate) and !preg_match('/^(0?[1-9]|[12][0-9]|3[01])\/(0?[1-9]|1[0-2])\/([0-9]{4})$/', $this->birthdate, $matches)) {
+      if(!empty($this->birthdate) and !preg_match('/^\d{4}-\d{2}-\d{2}$/', $this->birthdate, $matches)) {
         $this->error["error_birthdate"] = "Data inválida!";
       }
 
@@ -64,8 +63,8 @@
 
     public function registerContact() {
       $validatedContact = $this->validateContact();
-      
       if ($validatedContact) {
+        $this->setTable('contacts');
         $this->values = "(null,?,?,?,?,?,?,?,?)";
         $this->propArray = [
           $this->name,
@@ -77,6 +76,12 @@
           $this->photo,
           $this->getHour()
         ];
+        $registered = $this->create();
+        if ($registered) {
+          return true;
+        } else {
+          return false;
+        }
       }
       return false;
     }
