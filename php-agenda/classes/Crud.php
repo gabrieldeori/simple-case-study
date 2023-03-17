@@ -1,6 +1,4 @@
 <?php
-  require('../db/DB.php');
-
   class Crud extends DB {
     protected string $tabela;
     protected string $values;
