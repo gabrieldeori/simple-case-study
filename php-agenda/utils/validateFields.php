@@ -3,7 +3,7 @@
 
   define ("ERROR_VAL", "error_validate");
   define ("EMPTY_FIELD", "Todos campos precisam ser preenchidos!");
-  define ("ATLEAST_FIELD", "Ao menos um campo deve ser preenchido!");
+  define ("ATLEAST_FIELD", '[nome, apelido, número, email] ao menos um desses deve ser preenchido.');
 
   function validateEachField(string $fieldName) {
     if (isset($_POST[$fieldName])) {

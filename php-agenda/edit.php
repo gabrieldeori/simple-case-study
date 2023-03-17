@@ -3,25 +3,27 @@
   require('./utils/charFilter.php');
   require('./utils/validateFields.php');
 
-  $contact = new Contact();
+  if(isset($_POST['submit'])) {
+    $contact = new Contact();
 
-  $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
-  if (isset($validatedFields[ERROR_VAL])) {
-    $contact->setError($validatedFields);
-  } else {
-    $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo']);
-    $contact->set($validatedFields);
-    $contact->set($validatedOtherFields);
-    $registeredContact = $contact->registerContact();
-    if (!$registeredContact) {
-      echo "<pre class=\"developer\">";
-      print_r($registeredContact);
-      echo "</pre>";
+    $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
+    if (isset($validatedFields[ERROR_VAL])) {
+      $contact->setError($validatedFields);
+    } else {
+      $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo']);
+      $contact->set($validatedFields);
+      $contact->set($validatedOtherFields);
+      $registeredContact = $contact->registerContact();
+      if (!$registeredContact) {
+        echo "<pre class=\"developer\">";
+        print_r($registeredContact);
+        echo "</pre>";
+      }
     }
-  }
-
-  if($contact->getError()) {
-    print_r($contact->getError());
+     
+    if($contact->getError()) {
+      print_r($contact->getError());
+    }
   }
 ?>
 
@@ -65,7 +67,7 @@
         <input class="nice-input" type="date" name="birthdate" id="birthdate">
       </div>
       <div class="flex-row">
-        <button class="nice-btn-green" type="submit">Salvar</button>
+        <button class="nice-btn-green" type="submit" name="submit">Salvar</button>
       </div>
     </form>
     <div class="flex-row">
