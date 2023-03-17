@@ -4,7 +4,7 @@
   define ("ERROR", "erro");
   define ("EMPTY_FIELD", "Todos campos precisam ser preenchidos!");
 
-  function validateEmptyField(string $fieldName) {
+  function validateEachField(string $fieldName) {
     if (isset($_POST[$fieldName])) {
       $fieldValue = antiXSite($_POST[$fieldName]);
       
@@ -20,7 +20,7 @@
     
     for ($count=0; $count < count($fieldsArray); $count++) { 
       $fieldName = $fieldsArray[$count];
-      $response = validateEmptyField($fieldName);
+      $response = validateEachField($fieldName);
       if (!$response) {
         return [ERROR => EMPTY_FIELD];
       }
