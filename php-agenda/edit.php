@@ -3,17 +3,10 @@
   require('./utils/charFilter.php');
   require('./utils/validateFields.php');
 
-  echo "<br>POST: ";
-  print_r($_POST);
-  echo "<br>";
-  $contact = new Contact();
-  $contact_info = $contact->get();
-  echo "<br>contact_info: ";
-  print_r($contact_info);
-  echo "<br>";
-
-  $validatedFields = validateAllFields(["name", "surname", "nick", "number", "email", "birthdate"]);
-  
+  $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
+  if (isset($validatedFields['erroValidate'])) {
+    
+  }
 ?>
 
 <!DOCTYPE html>

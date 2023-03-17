@@ -4,7 +4,7 @@
     protected string $values;
     protected string $fields;
     protected array $propArray;
-    protected array $erro;
+    protected array $error;
 
     public function create() {
       $sql = "INSERT INTO $this->tabela VALUES $this->values";
@@ -15,7 +15,7 @@
         return true;
       }
       return false;
-      $this->erro["erro_crud"] = "Não criado!";
+      $this->error["errorCrud"] = "Não criado!";
     }
 
     public function find() {
@@ -27,9 +27,9 @@
         return $finded;
       }
       return false;
-      $this->erro["erro_crud"] = "Nada encontrado!";
+      $this->error["errorCrud"] = "Nada encontrado!";
     }
-    
+
     public function update() {
       $sql = "UPDATE $this->tabela SET $this->values WHERE $this->fields";
       $sql = DB::prepare($sql);
@@ -38,7 +38,7 @@
         return true;
       }
       return false;
-      $this->erro["erro_crud"] = "Não atualizado!";
+      $this->error["errorCrud"] = "Não atualizado!";
     }
 
     public function delete() {
@@ -49,7 +49,11 @@
         return true;
       }
       return false;
-      $this->erro["erro_crud"] = "Não deletado!";
+      $this->error["errorCrud"] = "Não deletado!";
+    }
+
+    public function setError($assocErro) {
+      $this->error[$assocErro['errorName']] = $assocErro['error'];
     }
   }
 ?>
