@@ -16,12 +16,12 @@
       return self::$pdo;
     }
 
-    protected function createToken() {
-      return sha1(uniqid().date("Y-m-d H:i:s"));
+    public static function getHour() {
+      return date('Y-m-d H:i:s');
     }
 
-    protected function getHour() {
-      return date('Y-m-d H:i:s');
+    protected function createToken() {
+      return sha1(uniqid().self::getHour());
     }
 
     public static function prepare($sql) {
