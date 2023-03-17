@@ -12,18 +12,26 @@
     public function get() {
       return [
         'name'=>$this->name,
-        'name'=>$this->surname,
-        'name'=>$this->nick,
-        'name'=>$this->email,
-        'name'=>$this->number,
-        'name'=>$this->birthdate,
-        'name'=>$this->photo,
-        'name'=>$this->id
-      ];
-    }
+        'surname'=>$this->surname,
+        'nick'=>$this->nick,
+        'email'=>$this->email,
+        'number'=>$this->number,
+        'birthdate'=>$this->birthdate,
+        'photo'=>$this->photo,
+        'id'=>$this->id
+        ];
+      }
 
-    public function set($name, $surname, $nick, $email, $number, $birthdate, $photo) {
-
+      public function set($name, $surname, $nick, $email, $number, $birthdate, $photo) {
+        $this->name = 'name';
+        $this->surname = 'surname';
+        $this->nick = 'nick';
+        $this->email = 'email';
+        $this->number = 'number';
+        $this->birthdate = 'birthdate';
+        $this->photo = 'photo';
+        $this->id = 'id';
+        return true;
     }
   }
 ?>
