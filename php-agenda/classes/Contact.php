@@ -1,5 +1,6 @@
 <?php
   class Contact extends Crud {
+    private $tabela = "contacts";
     private $name = "";
     private $surname = "";
     private $nick = "";
@@ -65,7 +66,17 @@
       $validatedContact = $this->validateContact();
       
       if ($validatedContact) {
-        // Inserir no banco
+        $this->values = "(null,?,?,?,?,?,?,?,?)";
+        $this->propArray = [
+          $this->name,
+          $this->surname,
+          $this->nick,
+          $this->email,
+          $this->number,
+          $this->birthdate,
+          $this->photo,
+          $this->getHour()
+        ];
       }
       return false;
     }
