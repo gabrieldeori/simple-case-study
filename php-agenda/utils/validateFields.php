@@ -48,4 +48,14 @@
     }
     return $array_response;
   }
+
+  function validateAnyFields(array $fieldsArray) {
+    $array_response = [];
+    for ($count=0; $count < count($fieldsArray); $count++) { 
+      $fieldName = $fieldsArray[$count];
+      $response = validateEachField($fieldName);
+      $array_response[$fieldName] = $response;
+    }
+    return $array_response;
+  }
 ?>
