@@ -24,6 +24,18 @@
       return false;
     }
 
+    public function findAll() {
+      $sql = "SELECT * FROM $this->table";
+      $sql = DB::prepare($sql);
+      $sql->execute();
+      $finded = $sql->fetchAll();
+      if($finded) {
+        return $finded;
+      }
+      return false;
+      $this->error[ERROR_CRUD] = "Nada encontrado!";
+    }
+
     public function find() {
       $sql = "SELECT * FROM $this->table WHERE $this->fields LIMIT 1";
       $sql = DB::prepare($sql);

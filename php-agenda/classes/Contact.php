@@ -61,6 +61,11 @@
       return true;
     }
 
+    public function findAllContacts() {
+      $this->setTable('contacts');
+      return $this->findAll();
+    }
+
     public function registerContact() {
       $validatedContact = $this->validateContact();
       if ($validatedContact) {

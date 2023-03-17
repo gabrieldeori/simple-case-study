@@ -1,3 +1,9 @@
+<?php
+  require('./autoload.php');
+  require('./utils/charFilter.php');
+  require('./utils/validateFields.php');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -17,7 +23,8 @@
   </header>
   <main class="contacts">
     <?php
-
+      $contact = new Contact();
+      print_r($contact->findAllContacts());
     ?>
   </main>
   <script src="./src/scripts/contactMenu.js"></script>
