@@ -20,7 +20,7 @@
         echo "</pre>";
       }
     }
-     
+
     if($contact->getError()) {
       print_r($contact->getError());
     }
