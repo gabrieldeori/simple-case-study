@@ -51,7 +51,13 @@ form {
 
 .developer {
   background-color: #1f1f1f;
-  border: 0.2rem inset #cecece;
   color: white;
+  border: 0.2rem solid #333;
+  font-size: 1rem;
+  height: fit-content;
+  max-width: 100%;
+  overflow: scroll;
   padding: 1rem;
+  width: fit-content;
+  white-space: pre-line;
 }
