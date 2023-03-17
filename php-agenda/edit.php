@@ -39,7 +39,7 @@
 </head>
 <body>
   <main>
-    <form method="POST" enctype="multipart/form-data">
+    <form class="edit" method="POST" enctype="multipart/form-data">
       <img class="profile-pic" src="src/img/profile.svg" alt="">
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>
