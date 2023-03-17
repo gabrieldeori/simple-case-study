@@ -17,20 +17,41 @@
         return true;
       }
       return false;
-      $this->erro["erro_geral"] = "Ocorreu um erro interno no banco!";
+      $this->erro["erro_crud"] = "Não criado!";
     }
 
     public function find() {
       $sql = "SELECT * FROM $this->tabela WHERE $this->fields LIMIT 1";
       $sql = DB::prepare($sql);
       $sql->execute($this->propArray);
-      return $sql->fetch();
+      $finded = $sql->fetch();
+      if($finded) {
+        return $finded;
+      }
+      return false;
+      $this->erro["erro_crud"] = "Nada encontrado!";
     }
-
+    
     public function update() {
       $sql = "UPDATE $this->tabela SET $this->values WHERE $this->fields";
       $sql = DB::prepare($sql);
-      return $sql->execute($this->propArray);
+      $updated = $sql->execute($this->propArray);
+      if($updated) {
+        return true;
+      }
+      return false;
+      $this->erro["erro_crud"] = "Não atualizado!";
+    }
+
+    public function delete() {
+      $sql = "DELETE FROM $this->tabela WHERE $this->fields";
+      $sql = DB::prepare($sql);
+      $deleted = $sql->execute($this->propArray);
+      if ($deleted) {
+        return true;
+      }
+      return false;
+      $this->erro["erro_crud"] = "Não deletado!";
     }
   }
 ?>
