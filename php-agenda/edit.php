@@ -4,17 +4,16 @@
   require('./utils/validateFields.php');
 
   echo "<pre class=\"developer\">";
-  echo "POST: ";
-  print_r($_POST);
-  $contact = new Contact();
-  $contactInfo = $contact->get();
-  echo "contactInfo: ";
-  print_r($contactInfo);
   echo "</pre>";
 
+  $contact = new Contact();
+
   $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
-  if (isset($validatedFields['erroValidate'])) {
-    
+  if (isset($validatedFields[ERROR_VAL])) {
+    $contact->setError($validatedFields);
+    echo "<pre class=\"developer\">";
+    print_r($contact);
+    echo "</pre>";
   }
 ?>
 

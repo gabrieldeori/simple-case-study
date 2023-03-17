@@ -52,8 +52,9 @@
       $this->error["errorCrud"] = "Não deletado!";
     }
 
-    public function setError($assocErro) {
-      $this->error[$assocErro['errorName']] = $assocErro['error'];
+    public function setError($error) {
+      $errorKey = array_keys($error)[0];
+      $this->error[$errorKey] = $error[$errorKey];
     }
   }
 ?>

@@ -1,7 +1,7 @@
 <?php
   require_once('utils/charFilter.php');
 
-  define ("ERROR", "erroValidate");
+  define ("ERROR_VAL", "errorValidate");
   define ("EMPTY_FIELD", "Todos campos precisam ser preenchidos!");
   define ("ATLEAST_FIELD", "Ao menos um campo deve ser preenchido!");
 
@@ -23,7 +23,7 @@
       $fieldName = $fieldsArray[$count];
       $response = validateEachField($fieldName);
       if (!$response) {
-        return [ERROR => EMPTY_FIELD];
+        return [ERROR_VAL => EMPTY_FIELD];
       }
       $array_response[$fieldName] = $response;
     }
@@ -44,7 +44,7 @@
     }
 
     if (!$valid) {
-      return [ERROR => ATLEAST_FIELD];
+      return [ERROR_VAL => ATLEAST_FIELD];
     }
     return $array_response;
   }
