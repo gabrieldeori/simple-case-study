@@ -48,3 +48,9 @@ form {
   display: flex;
   flex-direction: row;
 }
+
+.developer {
+  background-color: #1f1f1f;
+  border: 0.2rem inset #cecece;
+  color: white;
+}
