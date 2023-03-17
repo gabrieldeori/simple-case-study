@@ -13,8 +13,9 @@
       $registered = $sql->execute($this->propArray);
 
       if($registered) {
-        return $registered;
+        return true;
       }
+      return false;
       $this->erro["erro_geral"] = "Ocorreu um erro interno no banco!";
     }
 

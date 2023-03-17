@@ -1,5 +1,5 @@
 <?php
-  class Contact {
+  class Contact extends Crud {
     private $name = "";
     private $surname = "";
     private $nick = "";
