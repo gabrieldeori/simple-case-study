@@ -3,16 +3,16 @@
   require('./utils/charFilter.php');
   require('./utils/validateFields.php');
 
-  print_r($_POST);
+  $contact = new Contact();
+  $contact->set($_POST);
+  $contactValues = $contact->get();
 
   if(isset($_POST['submit'])) {
-    $contact = new Contact();
-
     $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
     if (isset($validatedFields[ERROR_VAL])) {
       $contact->setError($validatedFields);
     } else {
-      $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo']);
+      $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo', 'id']);
       $contact->set($validatedFields);
       $contact->set($validatedOtherFields);
       $registeredContact = $contact->registerContact();
@@ -48,29 +48,42 @@
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>
         <div>
-          <input class="nice-input" type="text" name="name" id="name" placeholder="Nome">
-          <input class="nice-input" type="text" name="surname" id="surname" placeholder="Sobrenome">
-          <input class="nice-input" type="text" name="nick" id="nick" placeholder="Apelido">
+          <input class="nice-input" type="text" name="name" id="name" placeholder="Nome"
+            value=<?php echo "'$contactValues->name'" ?>
+          >
+          <input class="nice-input" type="text" name="surname" id="surname" placeholder="Sobrenome"
+            value=<?php echo "'$contactValues->surname'" ?>
+          >
+          <input class="nice-input" type="text" name="nick" id="nick" placeholder="Apelido"
+            value=<?php echo "'$contactValues->nick'" ?>
+          >
         </div>
       </div>
     
       <div class="form-group">
         <label for="number"><i class="fa-solid fa-phone"></i></label>
-        <input class="nice-input" type="tel" name="number" id="number" placeholder="Celular">
+        <input class="nice-input" type="tel" name="number" id="number" placeholder="Número"
+          value=<?php echo "'$contactValues->number'" ?>
+        >
       </div>
     
       <div class="form-group">
         <label for="email"><i class="fa-solid fa-envelope"></i></label>
-        <input class="nice-input" type="email" name="email" id="email" placeholder="E-mail">
+        <input class="nice-input" type="email" name="email" id="email" placeholder="E-mail"
+          value=<?php echo "'$contactValues->email'" ?>
+        >
       </div>
     
       <div class="form-group">
         <label for="birthdate"><i class="fa-solid fa-cake-candles"></i></label>
-        <input class="nice-input" type="date" name="birthdate" id="birthdate">
+        <input class="nice-input" type="date" name="birthdate" id="birthdate"
+          value=<?php echo "'$contactValues->birthdate'" ?>
+        >
       </div>
       <div class="flex-row">
         <button class="nice-btn-green" type="submit" name="submit">Salvar</button>
       </div>
+      <input type="hidden" name="id">
     </form>
     <div class="flex-row">
         <a href="index.php"><button class="nice-btn-green">Voltar</button></a>

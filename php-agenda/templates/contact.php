@@ -28,7 +28,6 @@
           <a type="submit" id="videoCall"><i class="fa-solid fa-video"></i></a>
           <a type="submit" id="sendMessage"><i class="fa-solid fa-comment-sms"></i></a>
         </nav>
-        <input type="hidden" name="teste" value="ABC">
       </article>
     </button>
     <?php

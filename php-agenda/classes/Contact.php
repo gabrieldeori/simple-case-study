@@ -10,15 +10,15 @@
     private $id = "";
 
     public function get() {
-      return [
-        'name'=>$this->name,
-        'surname'=>$this->surname,
-        'nick'=>$this->nick,
-        'email'=>$this->email,
-        'number'=>$this->number,
-        'birthdate'=>$this->birthdate,
-        'photo'=>$this->photo,
-        'id'=>$this->id
+      return (object) [
+        "name"=>$this->name,
+        "surname"=>$this->surname,
+        "nick"=>$this->nick,
+        "email"=>$this->email,
+        "number"=>$this->number,
+        "birthdate"=>$this->birthdate,
+        "photo"=>$this->photo,
+        "id"=>$this->id
         ];
       }
 
@@ -68,7 +68,7 @@
 
     public function registerContact() {
       $validatedContact = $this->validateContact();
-      if ($validatedContact) {
+      if ($validatedContact && empty($this->id)) {
         $this->setTable('contacts');
         $this->values = "(null,?,?,?,?,?,?,?,?)";
         $this->propArray = [
@@ -82,6 +82,25 @@
           $this->getHour()
         ];
         $registered = $this->create();
+        if ($registered) {
+          return true;
+        } else {
+          return false;
+        }
+      } else if ($validatedContact && !empty($this->id)) {
+        $this->setTable('contacts');
+        $this->values = "(?,?,?,?,?,?,?,?)";
+        $this->propArray = [
+          $this->name,
+          $this->surname,
+          $this->nick,
+          $this->email,
+          $this->number,
+          $this->birthdate,
+          $this->photo,
+        ];
+        $this->fields = ['id', 'name', 'surname', 'nick', 'email', 'number', 'birthdate', 'photo'];
+        $registered = $this->update();
         if ($registered) {
           return true;
         } else {
