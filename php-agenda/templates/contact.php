@@ -9,6 +9,7 @@
     $birthdate = $assocContact->birthdate;
     $photo = $assocContact->photo;
     $date_register = $assocContact->date_register;
+    print_r($assocContact);
 ?>
   <form method="POST" class="contact" action="edit.php">
       <article
@@ -31,15 +32,15 @@
       </article>
     </button>
     <?php
-      echo "<input hidden name='id' value=" . $assocContact->id . ">";
-      echo "<input hidden name='name' value=" . $assocContact->name . ">";
-      echo "<input hidden name='surname' value=" . $assocContact->surname . ">";
-      echo "<input hidden name='nick' value=" . $assocContact->nick . ">";
-      echo "<input hidden name='email' value=" . $assocContact->email . ">";
-      echo "<input hidden name='number' value=" . $assocContact->number . ">";
-      echo "<input hidden name='birthdate' value=" . $assocContact->birthdate . ">";
-      echo "<input hidden name='photo' value=" . $assocContact->photo . ">";
-      echo "<input hidden name='data_register' value=" . $assocContact->date_register . ">";
+      echo "<input hidden name='id' value='$assocContact->id'>";
+      echo "<input hidden name='name' value='$assocContact->name'>";
+      echo "<input hidden name='surname' value='$assocContact->surname'>";
+      echo "<input hidden name='nick' value='$assocContact->nick'>";
+      echo "<input hidden name='email' value='$assocContact->email'>";
+      echo "<input hidden name='number' value='$assocContact->number'>";
+      echo "<input hidden name='birthdate' value='$assocContact->birthdate'>";
+      echo "<input hidden name='photo' value='$assocContact->photo'>";
+      echo "<input hidden name='data_register' value='$assocContact->date_register'>";
     ?>
   </form>
 <?php } ?>
