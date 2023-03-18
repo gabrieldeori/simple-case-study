@@ -28,7 +28,7 @@
     }
   }
 
-  if(isset($_POST['delete'])) {
+  if(isset($_POST['delete']) && $_POST['delete'] === "deletar") {
     $contact->deleteContact();
   }
 ?>
