@@ -68,7 +68,8 @@
 
     public function registerContact() {
       $validatedContact = $this->validateContact();
-      if ($validatedContact && empty($this->id)) {
+      echo "id: $this->id";
+      if ($validatedContact && $this->id === "") {
         $this->setTable('contacts');
         $this->values = "(null,?,?,?,?,?,?,?,?)";
         $this->propArray = [
@@ -87,10 +88,10 @@
         } else {
           return false;
         }
-      } else if ($validatedContact && !empty($this->id)) {
+      } else if ($validatedContact && $this->id !== "") {
         $this->setTable('contacts');
-        $this->values = "(?,?,?,?,?,?,?,?)";
-        $this->propArray = [
+        $this->values = "name=?,surname=?,nick=?,email=?,number=?,birthdate=?,photo=?";
+        $this->propArray = (array) [
           $this->name,
           $this->surname,
           $this->nick,
@@ -98,8 +99,10 @@
           $this->number,
           $this->birthdate,
           $this->photo,
+          $this->id
         ];
-        $this->fields = ['id', 'name', 'surname', 'nick', 'email', 'number', 'birthdate', 'photo'];
+        print_r($this->propArray);
+        $this->fields = 'id=?';
         $registered = $this->update();
         if ($registered) {
           return true;
@@ -111,3 +114,4 @@
     }
   }
 ?>
+

@@ -83,7 +83,7 @@
       <div class="flex-row">
         <button class="nice-btn-green" type="submit" name="submit">Salvar</button>
       </div>
-      <input type="hidden" name="id">
+      <input type="hidden" name="id" value=<?php echo"'$contactValues->id'" ?>>
     </form>
     <div class="flex-row">
         <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
