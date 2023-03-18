@@ -16,6 +16,7 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,6 +27,7 @@
   <script src="https://kit.fontawesome.com/1c46d70306.js" crossorigin="anonymous"></script>
   <title>Agenda</title>
 </head>
+
 <body>
   <header>
     <h1>Contatos</h1>
@@ -40,4 +42,5 @@
   </main>
   <script src="./src/scripts/contactMenu.js"></script>
 </body>
+
 </html>

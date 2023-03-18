@@ -31,6 +31,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -41,6 +42,7 @@
   <script src="https://kit.fontawesome.com/1c46d70306.js" crossorigin="anonymous"></script>
   <title>Editar Contato</title>
 </head>
+
 <body>
   <main>
     <form class="edit" method="POST" enctype="multipart/form-data">
@@ -49,36 +51,30 @@
         <label for="name"><i class="fa-solid fa-user"></i></label>
         <div>
           <input class="nice-input" type="text" name="name" id="name" placeholder="Nome"
-            value=<?php echo "'$contactValues->name'" ?>
-          >
+            value=<?php echo "'$contactValues->name'" ?>>
           <input class="nice-input" type="text" name="surname" id="surname" placeholder="Sobrenome"
-            value=<?php echo "'$contactValues->surname'" ?>
-          >
+            value=<?php echo "'$contactValues->surname'" ?>>
           <input class="nice-input" type="text" name="nick" id="nick" placeholder="Apelido"
-            value=<?php echo "'$contactValues->nick'" ?>
-          >
+            value=<?php echo "'$contactValues->nick'" ?>>
         </div>
       </div>
-    
+
       <div class="form-group">
         <label for="number"><i class="fa-solid fa-phone"></i></label>
         <input class="nice-input" type="tel" name="number" id="number" placeholder="Número"
-          value=<?php echo "'$contactValues->number'" ?>
-        >
+          value=<?php echo "'$contactValues->number'" ?>>
       </div>
-    
+
       <div class="form-group">
         <label for="email"><i class="fa-solid fa-envelope"></i></label>
         <input class="nice-input" type="email" name="email" id="email" placeholder="E-mail"
-          value=<?php echo "'$contactValues->email'" ?>
-        >
+          value=<?php echo "'$contactValues->email'" ?>>
       </div>
-    
+
       <div class="form-group">
         <label for="birthdate"><i class="fa-solid fa-cake-candles"></i></label>
         <input class="nice-input" type="date" name="birthdate" id="birthdate"
-          value=<?php echo "'$contactValues->birthdate'" ?>
-        >
+          value=<?php echo "'$contactValues->birthdate'" ?>>
       </div>
       <div class="flex-row">
         <button class="nice-btn-green" type="submit" name="submit">Salvar</button>
@@ -86,8 +82,9 @@
       <input type="hidden" name="id" value=<?php echo"'$contactValues->id'" ?>>
     </form>
     <div class="flex-row">
-        <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
-      </div>
+      <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
+    </div>
   </main>
 </body>
+
 </html>
