@@ -6,12 +6,6 @@
 
   $contacts = new Contact();
   $contacts = $contacts->findAllContacts();
-
-  foreach($contacts as $contact) {
-    echo "<pre class='developer'>";
-    print_r($contact);
-    echo "</pre>";
-  }
 ?>
 
 <!DOCTYPE html>
@@ -35,8 +29,10 @@
   </header>
   <main class="contacts">
     <?php
-    foreach($contacts as $contact) {
-      createContact($contact);
+    if($contacts) {
+      foreach($contacts as $contact) {
+        createContact($contact);
+      }
     }
     ?>
   </main>
