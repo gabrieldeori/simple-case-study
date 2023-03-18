@@ -8,6 +8,7 @@
     private $birthdate = "";
     private $photo = "";
     private $id = "";
+    private $old_photo = "";
 
     public function get() {
       return (object) [
@@ -27,6 +28,10 @@
           $this->$key = $value;
         }
         return true;
+    }
+
+    public function setOldPhoto($old) {
+      $this->old_photo = $old;
     }
 
     public function setProfilepic($imageInfo) {
@@ -66,9 +71,12 @@
           if ($image['size'] > $max_size) {
             $this->error["error_photo"] = "Tamanho máximo de 2mb";
           } else {
-            $imgname = $image['name'];
+            $imgname = sha1(date('YmdHis').uniqid().$image['name']).".".$extension;
             $temporary = $image['tmp_name'];
             $dir = './public/img/';
+            if (file_exists($this->old_photo)) {
+              $deleted = unlink($this->old_photo);
+            }
 
             move_uploaded_file($temporary, $dir . $imgname);
             $this->photo = $dir . $imgname;

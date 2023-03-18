@@ -16,6 +16,7 @@
       $validatedProfilepic = validateProfilepic('profilepic');
       $contact->set($validatedFields);
       $contact->set($validatedOtherFields);
+      $contact->setOldPhoto($contactValues->photo);
       $contact->setProfilepic($validatedProfilepic);
       $registeredContact = $contact->registerContact();
     }
@@ -45,10 +46,13 @@
 </head>
 
 <body>
+  <?php
+    $contactValues = $contact->get();
+  ?>
   <main>
     <form class="edit" method="POST" enctype="multipart/form-data">
       <img class="profile-pic" alt=""
-        src=<?php echo "'$contactValues->photo'"; echo $contactValues->photo ?>
+        src=<?php echo "'$contactValues->photo'"; ?>
       >
       <!-- IMAGEM -->
       <input type="file" name="profilepic" id="profilepic">
