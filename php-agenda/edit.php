@@ -3,6 +3,8 @@
   require('./utils/charFilter.php');
   require('./utils/validateFields.php');
 
+  print_r($_POST);
+
   if(isset($_POST['submit'])) {
     $contact = new Contact();
 

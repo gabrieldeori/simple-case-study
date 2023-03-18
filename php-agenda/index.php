@@ -2,6 +2,16 @@
   require('./autoload.php');
   require('./utils/charFilter.php');
   require('./utils/validateFields.php');
+  require('./templates/contact.php');
+
+  $contacts = new Contact();
+  $contacts = $contacts->findAllContacts();
+
+  foreach($contacts as $contact) {
+    echo "<pre class='developer'>";
+    print_r($contact);
+    echo "</pre>";
+  }
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +33,9 @@
   </header>
   <main class="contacts">
     <?php
-      $contact = new Contact();
-      print_r($contact->findAllContacts());
+    foreach($contacts as $contact) {
+      createContact($contact);
+    }
     ?>
   </main>
   <script src="./src/scripts/contactMenu.js"></script>
