@@ -66,4 +66,15 @@
     }
     return $array_response;
   }
+
+  function validateProfilepic($fieldName) {
+    if (isset($_FILES[$fieldName])) {
+      $fieldValue = $_FILES[$fieldName];
+
+      if (!empty($fieldValue)) {
+        return $fieldValue;
+      }
+    }
+    return false;
+  }
 ?>

@@ -12,15 +12,12 @@
     if (isset($validatedFields[ERROR_VAL])) {
       $contact->setError($validatedFields);
     } else {
-      $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'photo', 'id']);
+      $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'id']);
+      $validatedProfilepic = validateProfilepic('profilepic');
       $contact->set($validatedFields);
       $contact->set($validatedOtherFields);
+      $contact->setProfilepic($validatedProfilepic);
       $registeredContact = $contact->registerContact();
-      if (!$registeredContact) {
-        echo "<pre class=\"developer\">";
-        print_r($registeredContact);
-        echo "</pre>";
-      }
     }
 
     if($contact->getError()) {
@@ -50,7 +47,13 @@
 <body>
   <main>
     <form class="edit" method="POST" enctype="multipart/form-data">
-      <img class="profile-pic" src="src/img/profile.svg" alt="">
+      <img class="profile-pic" alt=""
+        src=<?php echo "'$contactValues->photo'"; echo $contactValues->photo ?>
+      >
+      <!-- IMAGEM -->
+      <input type="file" name="profilepic" id="profilepic">
+      <!-- IMAGEM -->
+
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>
         <div>

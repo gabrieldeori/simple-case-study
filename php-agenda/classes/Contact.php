@@ -23,36 +23,58 @@
       }
 
       public function set($arrayProp) {
-        foreach ($arrayProp as $key => $value) {
+        foreach ((object) $arrayProp as $key => $value) {
           $this->$key = $value;
         }
         return true;
     }
 
+    public function setProfilepic($imageInfo) {
+        $this->photo = $imageInfo;
+      return true;
+  }
+
     private function validateContact() {
-      if (!empty($this->name) and !preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$/", $this->name)) {
+      if (!empty($this->name) && !preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$/", $this->name)) {
         $this->error["error_name"] = "Somente letras e espaços em branco!";
       }
 
-      if (!empty($this->surname) and !preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$/", $this->surname)) {
+      if (!empty($this->surname) && !preg_match("/^[a-zA-ZÀ-ÖØ-öø-ÿ ]*$/", $this->surname)) {
         $this->error["error_surname"] = "Somente letras e espaços em branco!";
       }
 
-      if (!empty($this->email) and !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+      if (!empty($this->email) && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
         $this->error["error_email"] = "Formato de email inválido!";
       }
 
-      if(!empty($this->number) and !preg_match('/^[\d\s()+-]+$/', $this->number)) {
+      if (!empty($this->number) && !preg_match('/^[\d\s()+-]+$/', $this->number)) {
         $this->error["error_number"] = "Número inválido!";
       }
 
-      if(!empty($this->birthdate) and !preg_match('/^\d{4}-\d{2}-\d{2}$/', $this->birthdate, $matches)) {
+      if (!empty($this->birthdate) && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $this->birthdate, $matches)) {
         $this->error["error_birthdate"] = "Data inválida!";
       }
 
-      // if(!empty($this->photo) and preg_match('/^.+\.(jpg|jpeg|png)$/', $this->photo)) {
-      //   $this->error["error_photo"] = "Arquivo inválido!";
-      // } # Esperar para ver se é possível validar o arquivo usando essa técnica.
+      if (!empty($this->photo)) {
+        $image = $this->photo;
+        $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $permited = "/^(jpg|jpeg|png)$/";
+        if (!preg_match($permited, $extension)) {
+          $this->error["error_photo"] = "Apenas imagens jpg ou png permitidas";
+        } else {
+          $max_size = 1024 * 1024 * 2; // 2mb
+          if ($image['size'] > $max_size) {
+            $this->error["error_photo"] = "Tamanho máximo de 2mb";
+          } else {
+            $imgname = $image['name'];
+            $temporary = $image['tmp_name'];
+            $dir = './public/img/';
+
+            move_uploaded_file($temporary, $dir . $imgname);
+            $this->photo = $dir . $imgname;
+          }
+        }
+      }
 
       $someError = $this->getError();
       if ($someError) {
@@ -70,13 +92,11 @@
       $this->setTable('contacts');
       $this->fields = "id=?";
       $this->propArray = [$this->id];
-      echo "DELETADA?";
       $this->delete();
     }
 
     public function registerContact() {
       $validatedContact = $this->validateContact();
-      echo "id: $this->id";
       if ($validatedContact && $this->id === "") {
         $this->setTable('contacts');
         $this->values = "(null,?,?,?,?,?,?,?,?)";
@@ -109,7 +129,6 @@
           $this->photo,
           $this->id
         ];
-        print_r($this->propArray);
         $this->fields = 'id=?';
         $registered = $this->update();
         if ($registered) {

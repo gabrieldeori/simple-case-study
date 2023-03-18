@@ -9,7 +9,6 @@
     $birthdate = $assocContact->birthdate;
     $photo = $assocContact->photo;
     $date_register = $assocContact->date_register;
-    print_r($assocContact);
 ?>
 <form method="POST" class="contact" action="edit.php">
   <article id=<?php echo "\"$id\"" ?> class="contact">

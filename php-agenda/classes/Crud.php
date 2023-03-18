@@ -19,7 +19,6 @@
       if($registered) {
         return true;
       }
-      echo $registered;
       $this->error[ERROR_CRUD] = "Não criado!";
       return false;
     }
