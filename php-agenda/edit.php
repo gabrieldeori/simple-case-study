@@ -7,7 +7,7 @@
   $contact->set($_POST);
   $contactValues = $contact->get();
 
-  if(isset($_POST['submit'])) {
+  if(isset($_POST['submit']) && !isset($_POST['delete'])) {
     $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
     if (isset($validatedFields[ERROR_VAL])) {
       $contact->setError($validatedFields);
@@ -26,6 +26,10 @@
     if($contact->getError()) {
       print_r($contact->getError());
     }
+  }
+
+  if(isset($_POST['delete'])) {
+    $contact->deleteContact();
   }
 ?>
 
@@ -81,10 +85,26 @@
       </div>
       <input type="hidden" name="id" value=<?php echo"'$contactValues->id'" ?>>
     </form>
+    <form method="POST">
+      <input id="deleteInput" name="delete" type="text" placeholder="Digite 'deletar' sem aspas para deletar">
+      <input type="hidden" name="id" value=<?php echo"'$contactValues->id'" ?>>
+      <button disabled="true" id="deleteButton" type="submit">Deletar</button>
+    </form>
     <div class="flex-row">
       <a href="index.php"><button class="nice-btn-green">Voltar</button></a>
     </div>
   </main>
+  <script>
+    const deleteInput = document.getElementById('deleteInput');
+    const deleteButton = document.getElementById('deleteButton');
+    deleteInput.addEventListener('input', ({ target }) => {
+      if (target.value === "deletar") {
+        deleteButton.disabled = false;
+      } else {
+        deleteButton.disabled = true;
+      }
+    })
+  </script>
 </body>
 
 </html>

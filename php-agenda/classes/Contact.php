@@ -66,6 +66,14 @@
       return $this->findAll();
     }
 
+    public function deleteContact() {
+      $this->setTable('contacts');
+      $this->fields = "id=?";
+      $this->propArray = [$this->id];
+      echo "DELETADA?";
+      $this->delete();
+    }
+
     public function registerContact() {
       $validatedContact = $this->validateContact();
       echo "id: $this->id";
