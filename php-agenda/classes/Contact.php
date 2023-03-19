@@ -96,6 +96,13 @@
       return $this->findAll();
     }
 
+    public function findBy($field, $value) {
+      $this->setTable('contacts');
+      $this->fields = [$field."=?"];
+      $this->propArray = (array) [$value];
+      return $this->find();
+    }
+
     public function deleteContact() {
       $this->setTable('contacts');
       $this->fields = "id=?";

@@ -5,7 +5,12 @@
   require('./templates/contact.php');
 
   $contacts = new Contact();
-  $contacts = $contacts->findAllContacts();
+  if(isset($_POST['submit_search'])) {
+    echo "select: " . $_POST['selectSearch'];
+    echo "input: " . $_POST['inputSearch'];
+  } else {
+    $contacts = $contacts->findAllContacts();
+  }
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +33,19 @@
     <a href="edit.php"><button class="nice-btn-green">Novo contato</button></a>
   </header>
   <main class="contacts">
+    <form method="POST">
+      <select name="selectSearch" id="selectSearch">
+        <option value="name">Nome</option>
+        <option value="surname">Sobrenome</option>
+        <option value="nick">Apelido</option>
+        <option value="email">Email</option>
+        <option value="number">Número</option>
+        <option value="birthdate">Aniversário</option>
+      </select>
+      <input type="text" name="inputSearch" id="inputSearh">
+      <button type="submit" name="submit_search">Procurar</button>
+    </form>
+
     <?php
     if($contacts) {
       foreach($contacts as $contact) {
