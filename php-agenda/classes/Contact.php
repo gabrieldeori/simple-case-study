@@ -60,8 +60,9 @@
         $this->error["error_birthdate"] = "Data inválida!";
       }
 
-      if (!empty($this->photo)) {
+      if (!empty($this->photo['name'])) {
         $image = $this->photo;
+        print_r($image);
         $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
         $permited = "/^(jpg|jpeg|png)$/";
         if (!preg_match($permited, $extension)) {
@@ -82,6 +83,8 @@
             $this->photo = $dir . $imgname;
           }
         }
+      } else {
+        $this->photo = "./src/img/profile.svg";
       }
 
       $someError = $this->getError();
@@ -98,8 +101,10 @@
 
     public function findBy($field, $value) {
       $this->setTable('contacts');
-      $this->fields = [$field."=?"];
+      $this->fields = [$field . " LIKE ?"];
       $this->propArray = (array) [$value];
+      print_r($this->fields);
+      print_r($this->propArray);
       return $this->find();
     }
 

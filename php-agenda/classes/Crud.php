@@ -36,7 +36,7 @@
     }
 
     public function find() {
-      $sql = "SELECT * FROM $this->table WHERE $this->fields LIMIT 1";
+      $sql = "SELECT * FROM $this->table WHERE $this->fields";
       $sql = DB::prepare($sql);
       $sql->execute($this->propArray);
       $finded = $sql->fetch();

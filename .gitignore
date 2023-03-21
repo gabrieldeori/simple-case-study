@@ -1,4 +1,2 @@
 .OLD
-./php-agenda/public/img/*.png
-./php-agenda/public/img/*.jpg
-./php-agenda/public/img/*.jpeg
+php-agenda/public

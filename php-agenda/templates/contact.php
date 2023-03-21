@@ -28,7 +28,7 @@
   </article>
   </button>
   <?php
-      echo "<input hidden name='id' value='$assocContact->id'>";
+      echo "<input hidden name='id' value='$  ->id'>";
       echo "<input hidden name='name' value='$assocContact->name'>";
       echo "<input hidden name='surname' value='$assocContact->surname'>";
       echo "<input hidden name='nick' value='$assocContact->nick'>";
