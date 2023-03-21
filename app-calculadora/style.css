@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'digital';
+  src: url('./src/fonts/digital-7.ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: green;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  width: fit-content;
+}
+
+button {
+  border: 0.2rem outset rgba(128, 128, 128, 0.781);
+  box-shadow: 2px 2px 3px 2px #00000060;
+}
+
+button:active {
+  border: 0.2rem inset rgba(128, 128, 128, 0.781);
+  box-shadow: -1px -1px 8px 1px #0000007a;
+}
+
+.app-calculator {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.calculator {
+  background-color: grey;
+  border: 0.25rem inset rgba(255, 255, 255, 0.459);
+  border-radius: 2rem;
+  box-shadow: -3px -3px 12px 5px #000000;
+  padding: 0.2rem;
+}
+
+.header-io {
+  border-radius: 0.5rem;
+  border-bottom: 0.15rem solid rgba(0, 0, 0, 0.288);
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.screen {
+  background-color: rgb(199, 199, 199);
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.screen input {
+  background-color: #7f8a76;
+  border: 0.1rem solid white;
+  box-shadow: inset 0px 0px 11px 1px #000000;
+  color: black;
+  font-family: "digital";
+  font-size: 2rem;
+  letter-spacing: 0.15rem;
+  outline: none;
+  padding: 0.5rem;
+}
+
+.upper-inputs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.upper-inputs button {
+  background-color: #000000;
+  border-radius: 0.325rem;
+  color: white;
+  padding: 0.5rem;
+  margin: 0.25rem;
+}
+
+.main-buttons {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  width: 100%;
+}
+
+.center {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 0.25rem;
+  min-width: 12rem;
+  min-height: 18rem;
+}
+
+.center button {
+  background-color: rgb(20, 20, 20);
+  border-radius: 0.325rem;
+  color: white;
+  padding: 0.5rem;
+  margin: 0.25rem;
+}
+
+.right-side {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.right-side button {
+  background-color: rgb(66, 66, 66);
+  border-radius: 0.325rem;
+  color: white;
+  padding: 0.5rem;
+  margin: 0.25rem;
+}
