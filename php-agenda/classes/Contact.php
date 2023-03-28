@@ -99,7 +99,7 @@
       return $this->findAll();
     }
 
-    public function findBy($field, $value) {
+      public function findBy($field, $value) {
       $this->setTable('contacts');
       $this->fields = [$field . " LIKE ?"];
       $this->propArray = (array) [$value];
@@ -107,6 +107,8 @@
       print_r($this->propArray);
       return $this->find();
     }
+  
+
 
     public function deleteContact() {
       $this->setTable('contacts');
