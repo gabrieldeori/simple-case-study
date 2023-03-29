@@ -54,13 +54,13 @@ function buttonAddListeners() {
     const regex = /\d$/;
     button.addEventListener('click', ({ target: value }) => {
       if (regex.test(inputScreen.value)) {
-        inputScreen.value += value.innerText;
+        inputScreen.value += value.value;
       }
     });
   });
   
   dotButton.addEventListener('click', () => {
-    const regex = /(?<=\d)/;
+    const regex = /^(?:(?!\.)\d)+(?:\.\d+)?(?:[+\-*/](?:(?!\.)\d)+(?:\.\d+)?)*$/;
     if (regex.test(inputScreen.value)) {
       inputScreen.value += '.';
     }
@@ -68,7 +68,7 @@ function buttonAddListeners() {
   
   numericButtons.forEach((button) => {
     button.addEventListener('click', ({ target: value }) => {
-        inputScreen.value += value.innerText;
+        inputScreen.value += value.value;
     });
   });
 
