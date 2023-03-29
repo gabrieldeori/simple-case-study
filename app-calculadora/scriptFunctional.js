@@ -3,14 +3,10 @@ const operationButtons = document.querySelectorAll('.operation-button');
 const dotButton = document.getElementById('dotButton');
 const equalButton = document.getElementById('equalButton');
 const ceButton = document.getElementById('ceButton');
-const mrButton = document.getElementById('mrButton');
-const mcButton = document.getElementById('mcButton');
+const mrcButton = document.getElementById('mrcButton');
 const mmButton = document.getElementById('mmButton');
 const mpButton = document.getElementById('mpButton');
-const memoryIdentificator = document.getElementById('memoryIdentificator');
 const inputScreen = document.getElementById('screenInput');
-
-let secoMemory = "";
 
 function showResult(value) {
   inputScreen.value = value;
@@ -54,18 +50,18 @@ function buttonAddListeners() {
     const regex = /\d$/;
     button.addEventListener('click', ({ target: value }) => {
       if (regex.test(inputScreen.value)) {
-        inputScreen.value += value.innerText;
+        inputScreen.value += " " + value.innerText + " ";
       }
     });
   });
-  
+
   dotButton.addEventListener('click', () => {
     const regex = /(?<=\d)/;
     if (regex.test(inputScreen.value)) {
       inputScreen.value += '.';
     }
   })
-  
+
   numericButtons.forEach((button) => {
     button.addEventListener('click', ({ target: value }) => {
         inputScreen.value += value.innerText;
@@ -73,47 +69,19 @@ function buttonAddListeners() {
   });
 
   equalButton.addEventListener('click', () => {
-    const regex = /([-+*/])/g
-    const getScreen = inputScreen.value.split(regex, -1);
+    const getScreen = inputScreen.value.split(" ");
     const result = makeCalc(getScreen);
     showResult(result);
   });
 
   ceButton.addEventListener('click', () => {
-    inputScreen.value = "";
-  });
-
-  delButton.addEventListener('click', () => {
-    inputScreen.value = inputScreen.value.slice(0, -1);
-  });
-
-  mrButton.addEventListener('click', () => {
-    if(secoMemory != "") {
-      inputScreen.value += secoMemory;
-    }
-  });
-
-  mcButton.addEventListener('click', () => {
-    secoMemory = "";
-    memoryIdentificator.innerText = "";
-  });
-
-  mpButton.addEventListener('click', () => {
-    if(isNaN(secoMemory) || isNaN(inputScreen.value)) {
-      secoMemory += inputScreen.value;
-    } else {
-      secoMemory = Number(secoMemory) + Number(inputScreen.value);
-    }
-    memoryIdentificator.innerText = "m";
-  });
-
-  mmButton.addEventListener('click', () => {
-    if(isNaN(secoMemory) || isNaN(inputScreen.value)) {
-      secoMemory += "-" + inputScreen.value;
-    } else {
-      secoMemory = Number(secoMemory) - Number(inputScreen.value);
-    }
-    memoryIdentificator.innerText = "m";
+    inputScreen.value = "0";
+    // let len = inputScreen.value.length;
+    // if (inputScreen.value.slice(len - 1, len) === " ") {
+    //   inputScreen.value = inputScreen.value.slice(0, -3);
+    // } else {
+    //   inputScreen.value = inputScreen.value.slice(0, -1);
+    // }
   });
 }
 
