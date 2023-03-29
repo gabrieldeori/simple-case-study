@@ -1,5 +1,5 @@
 # Calculadora Expressão Numérica
-Case de uma calculadora em Javascript que faz cálculos de expressões numéricas utilizando as quatro operações fundamentais da matemática:
+Case de uma calculadora em Javascript que faz cálculos de expressões numéricas `(2+3*4-6/2...)` com função de memória e utilizando as quatro operações fundamentais da matemática:
 
 [![Link quatro operações](./src/img/4op.jpg)](https://youtu.be/ECaG_YBgoQs)
 
@@ -18,7 +18,13 @@ Case de uma calculadora em Javascript que faz cálculos de expressões numérica
   - [Iphone 6,7,8 375x667]()
 
 ## Links
+- [Link para a calculadora online no Vercel, use a vontade e reporte qualquer bug.](https://simple-case-study.vercel.app/app-calculadora/index.html)
 
+- [Link de outros projetos em JS no Vercel](https://simple-case-study.vercel.app/)
+
+- [Link para essa documentação](https://github.com/gabrieldeori/simple-case-study/tree/main/app-calculadora)
+
+  https://github.com/gabrieldeori/simple-case-study/tree/main/app-calculadora
 
 ## Manual de operação
 ### Interação
