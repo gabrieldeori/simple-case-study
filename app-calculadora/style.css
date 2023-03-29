@@ -32,10 +32,6 @@ button:active {
   font-size: 1rem;
 }
 
-ion-icon {
-  
-}
-
 .app-calculator {
   align-items: center;
   display: flex;
