@@ -1,7 +1,7 @@
 # Simple Case Studies
 Pequenos projetos para estudos de caso
 
-- [Calculadora de Expressões]()
+- [Calculadora de Expressões](https://github.com/gabrieldeori/simple-case-study/tree/main/app-calculadora)
 
 - [Calculadora de Signos | Zodiac Search](https://github.com/gabrieldeori/simple-case-study/tree/main/zodiac-search)
 
