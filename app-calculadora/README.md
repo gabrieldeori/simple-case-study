@@ -20,7 +20,9 @@ Case de uma calculadora em Javascript que faz cálculos de expressões numérica
 ## Links
 - [Confira aqui para visualizar o projeto online, diretamente no seu navegador sem configurar nada! Famoso "deploy".](https://simple-case-study.vercel.app/app-calculadora/index.html)
 
-- [Clique abaixo para acessar o vídeo completo. ![Link Projeto](./src/img/CalculaExpress.gif)](https://youtu.be/ECaG_YBgoQs)
+- Clique no GIF abaixo para acessar o vídeo completo.
+
+  [![Link Projeto](./src/img/CalculaExpress.gif)](https://youtu.be/ECaG_YBgoQs)
 
 - [Link de outros "deploys" de projetos em Javascript](https://simple-case-study.vercel.app/)
 
