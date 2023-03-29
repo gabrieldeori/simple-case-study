@@ -23,6 +23,18 @@ function makeCalc(array) {
   for (let i = 0; i < array.length; i++) {
     const curr = array[i];
     
+    if (curr === "*" || curr === "/") {
+      const prev = array[i-1];
+      const next = array[i+1];
+      const currResult = curr === "*" ? prev * next : prev / next;
+      array.splice(i-1, 3, currResult);
+      i -= 2;
+    }
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    const curr = array[i];
+    
     if (!isNaN(curr)) {
       switch (operation) {
         case "+":
@@ -31,20 +43,12 @@ function makeCalc(array) {
         case "-":
           result -= Number(curr);
           break;
-        case "*":
-          result *= Number(curr);
-          break;
-        case "/":
-          if (curr === "0") {
-            return "Divisão por 0";
-          }
-          result /= Number(curr);
-          break;
       }
     } else {
       operation = curr;
     }
   }
+  
   return `${result}`;
 }
 
