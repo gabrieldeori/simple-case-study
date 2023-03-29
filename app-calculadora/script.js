@@ -56,8 +56,6 @@ function buttonAddListeners() {
   operationButtons.forEach((button) => {
     const regex = /[0-9]$/;
     button.addEventListener('click', ({ target: value }) => {
-      console.log(value);
-      console.log(value.value);
       if (regex.test(inputScreen.value)) {
         inputScreen.value += value.value;
       }

@@ -72,7 +72,6 @@ async function getDateFromInput() {
       const splitDate = value.split('-');
       const dMDate = `${splitDate[1]}-${splitDate[2]}`;
       const clientZodiacSign = await getZodiac(dMDate, PTBR);
-      console.log(clientZodiacSign);
       updateResultField(clientZodiacSign);
     }
   });

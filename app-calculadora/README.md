@@ -18,9 +18,11 @@ Case de uma calculadora em Javascript que faz cálculos de expressões numérica
   - [Iphone 6,7,8 375x667]()
 
 ## Links
-- [Link para a calculadora online no Vercel, use a vontade e reporte qualquer bug.](https://simple-case-study.vercel.app/app-calculadora/index.html)
+- [Confira aqui para visualizar o projeto online, diretamente no seu navegador sem configurar nada! Famoso "deploy".](https://simple-case-study.vercel.app/app-calculadora/index.html)
 
-- [Link de outros projetos em JS no Vercel](https://simple-case-study.vercel.app/)
+- [Clique abaixo para acessar o vídeo completo. ![Link Projeto](./src/img/CalculaExpress.gif)](https://youtu.be/ECaG_YBgoQs)
+
+- [Link de outros "deploys" de projetos em Javascript](https://simple-case-study.vercel.app/)
 
 - [Link para essa documentação](https://github.com/gabrieldeori/simple-case-study/tree/main/app-calculadora)
 
@@ -126,4 +128,4 @@ Abaixo estão os previews em mobile:
 ![Imagem ](./src/img/MotoG4Portrait.jpg)
 
 ### Iphone 6,7,8 375x667
-![Imagem ](./src/img/MotoG4Portrait.jpg)
+![Imagem ](./src/img/IphonePortrait.jpg)
