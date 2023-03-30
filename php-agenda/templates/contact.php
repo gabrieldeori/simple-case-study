@@ -27,15 +27,15 @@
   </article>
   </button>
   <?php
-      echo "<input hidden name='id' value='$  ->id'>";
-      echo "<input hidden name='name' value='$name'>";
-      echo "<input hidden name='surname' value='$surname'>";
-      echo "<input hidden name='nick' value='$nick'>";
-      echo "<input hidden name='email' value='$email'>";
-      echo "<input hidden name='number' value='$number'>";
-      echo "<input hidden name='birthdate' value='$birthdate'>";
-      echo "<input hidden name='photo' value='$photo'>";
-      echo "<input hidden name='data_register' value='$date_register'>";
+    echo "<input hidden name='id' value='$id'>";
+    echo "<input hidden name='name' value='$name'>";
+    echo "<input hidden name='surname' value='$surname'>";
+    echo "<input hidden name='nick' value='$nick'>";
+    echo "<input hidden name='email' value='$email'>";
+    echo "<input hidden name='number' value='$number'>";
+    echo "<input hidden name='birthdate' value='$birthdate'>";
+    echo "<input hidden name='photo' value='$photo'>";
+    echo "<input hidden name='data_register' value='$date_register'>";
     ?>
 </form>
 <?php } ?>
