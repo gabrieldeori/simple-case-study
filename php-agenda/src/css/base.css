@@ -3,9 +3,16 @@
   font-family: Helvetica, arial, sans-serif;
   --light-option-0: #f0f0f0;
   --lighter: #ffffffa0;
+  --lighter-grey: #cecece;
+  --light-grey: #aaa;
   --darker: #00000010;
   --green-1: #22aa33ff;
   --greener: #00ff0030;
   --greener2: #00ff00ff;
-  --light-grey: #aaa;
+}
+
+body {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }

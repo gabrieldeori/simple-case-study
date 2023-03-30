@@ -7,16 +7,6 @@
   width: 100%;
 }
 
-.nice-btn-green {
-  background-color: var(--green-1);
-  border: none;
-  border-radius: 0.5rem;
-  color: white;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  margin: 0.5rem 0.2rem;
-}
-
 .contacts {
   align-items: center;
   display: flex;

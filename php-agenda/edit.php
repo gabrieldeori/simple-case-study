@@ -49,25 +49,33 @@
   <?php
     $contactValues = $contact->get();
   ?>
+  <header class="contacts-header">
+    <h1>Contatos</h1>
+  </header>
   <main>
     <form class="edit" method="POST" enctype="multipart/form-data">
       <img class="profile-pic" alt=""
         src=<?php echo "'$contactValues->photo'"; ?>
       >
-      <!-- IMAGEM -->
+
       <input type="file" name="profilepic" id="profilepic">
-      <!-- IMAGEM -->
 
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>
-        <div>
-          <input class="nice-input" type="text" name="name" id="name" placeholder="Nome"
+        <input class="nice-input" type="text" name="name" id="name" placeholder="Nome"
             value=<?php echo "'$contactValues->name'" ?>>
-          <input class="nice-input" type="text" name="surname" id="surname" placeholder="Sobrenome"
+      </div>
+
+      <div class="form-group">
+        <label for="name"><i class="fa-solid fa-user"></i></label>
+        <input class="nice-input" type="text" name="surname" id="surname" placeholder="Sobrenome"
             value=<?php echo "'$contactValues->surname'" ?>>
-          <input class="nice-input" type="text" name="nick" id="nick" placeholder="Apelido"
+      </div>
+
+      <div class="form-group">
+        <label for="name"><i class="fa-solid fa-user"></i></label>
+        <input class="nice-input" type="text" name="nick" id="nick" placeholder="Apelido"
             value=<?php echo "'$contactValues->nick'" ?>>
-        </div>
       </div>
 
       <div class="form-group">
@@ -92,10 +100,10 @@
       </div>
       <input type="hidden" name="id" value=<?php echo"'$contactValues->id'" ?>>
     </form>
-    <form method="POST">
+    <form class="flex-row" method="POST">
       <input id="deleteInput" name="delete" type="text" placeholder="Digite 'deletar' sem aspas para deletar">
       <input type="hidden" name="id" value=<?php echo"'$contactValues->id'" ?>>
-      <button disabled="true" id="deleteButton" type="submit">Deletar</button>
+      <button disabled="true" class="nice-btn-green" id="deleteButton" type="submit">Deletar</button>
     </form>
     <div class="flex-row">
       <a href="index.php"><button class="nice-btn-green">Voltar</button></a>

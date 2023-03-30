@@ -1,0 +1,28 @@
+form.edit {
+  align-items: left;
+  background-color: var(--greener);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.8rem;
+  max-width: 640px;
+}
+
+form.edit .profile-pic {
+  border-radius: 0.75rem;
+  margin-bottom: 0.2rem;
+  width: 100%;
+}
+
+#profilepic {
+  margin-bottom: 1rem;
+}
+
+#deleteButton {
+  background-color: red;
+}
+
+#deleteButton:disabled {
+  background-color: var(--lighter-grey);
+}
