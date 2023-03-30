@@ -48,7 +48,8 @@
     }
 
     public function genericSearch($value) {
-      $sql = "SELECT * FROM $this->table WHERE name LIKE %$value% OR nick LIKE %$value%";
+      $sql = "SELECT * FROM $this->table WHERE";
+      // name LIKE %$value% OR nick LIKE %$value%"
       $sql = DB::prepare($sql);
       $sql->execute($this->propArray);
       $finded = $sql->fetch();

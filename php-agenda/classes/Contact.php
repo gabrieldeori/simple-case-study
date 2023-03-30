@@ -62,7 +62,6 @@
 
       if (!empty($this->photo['name'])) {
         $image = $this->photo;
-        print_r($image);
         $extension = pathinfo($image['name'], PATHINFO_EXTENSION);
         $permited = "/^(jpg|jpeg|png)$/";
         if (!preg_match($permited, $extension)) {
@@ -99,12 +98,10 @@
       return $this->findAll();
     }
 
-      public function findBy($field, $value) {
+    public function findBy($fieldString, $valueArray) {
       $this->setTable('contacts');
-      $this->fields = [$field . " LIKE ?"];
-      $this->propArray = (array) [$value];
-      print_r($this->fields);
-      print_r($this->propArray);
+      $this->fields = [$fieldString];
+      $this->propArray = (array) [$valueArray];
       return $this->find();
     }
   

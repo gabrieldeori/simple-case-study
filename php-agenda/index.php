@@ -4,12 +4,16 @@
   require('./utils/validateFields.php');
   require('./templates/contact.php');
 
+  
   $contacts = new Contact();
+
   if(isset($_POST['submit_search'])) {
-    echo "select: " . $_POST['selectSearch'];
     echo "input: " . $_POST['inputSearch'];
   } else {
     $contacts = $contacts->findAllContacts();
+    usort($contacts, function($a, $b) {
+      return strcmp($a->name, $b->name);
+    });
   }
 ?>
 
