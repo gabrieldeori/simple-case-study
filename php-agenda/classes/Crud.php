@@ -47,19 +47,6 @@
       $this->error[ERROR_CRUD] = "Nada encontrado!";
     }
 
-    public function genericSearch($value) {
-      $sql = "SELECT * FROM $this->table WHERE";
-      // name LIKE %$value% OR nick LIKE %$value%"
-      $sql = DB::prepare($sql);
-      $sql->execute($this->propArray);
-      $finded = $sql->fetch();
-      if($finded) {
-        return $finded;
-      }
-      return false;
-      $this->error[ERROR_CRUD] = "Nada encontrado!";
-    }
-
     public function update() {
       $sql = "UPDATE $this->table SET $this->values WHERE $this->fields";
       $sql = DB::prepare($sql);

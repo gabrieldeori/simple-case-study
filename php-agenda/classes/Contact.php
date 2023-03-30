@@ -104,8 +104,14 @@
       $this->propArray = (array) [$valueArray];
       return $this->find();
     }
-  
 
+    public function findByAnything($value) {
+      $value = '%' . $value . '%';
+      $this->setTable('contacts');
+      $this->fields = " name LIKE ? OR surname LIKE ? OR nick LIKE ?";
+      $this->propArray = (array) [$value, $value, $value];
+      return $this->find();
+    }
 
     public function deleteContact() {
       $this->setTable('contacts');
