@@ -28,33 +28,25 @@
 </head>
 
 <body>
-  <header>
+  <header class="contacts-header">
     <h1>Contatos</h1>
-    <a href="edit.php"><button class="nice-btn-green">Novo contato</button></a>
   </header>
   <main class="contacts">
-    <form method="POST">
-      <select name="selectSearch" id="selectSearch">
-        <option value="name">Nome</option>
-        <option value="surname">Sobrenome</option>
-        <option value="nick">Apelido</option>
-        <option value="email">Email</option>
-        <option value="number">Número</option>
-        <option value="birthdate">Aniversário</option>
-      </select>
-      <input type="text" name="inputSearch" id="inputSearh">
-      <button type="submit" name="submit_search">Procurar</button>
-    </form>
-
+    <div class="header-controls">
+      <a href="edit.php" class="nice-btn-green">Novo Contato</a>
+      <form method="POST">
+        <input type="text" name="inputSearch" id="inputSearh">
+        <button type="submit" name="submit_search" class="nice-btn-green">Procurar</button>
+      </form>
+    </div>
     <?php
-    if($contacts) {
-      foreach($contacts as $contact) {
-        createContact($contact);
+      if($contacts) {
+        foreach($contacts as $contact) {
+          createContact($contact);
+        }
       }
-    }
     ?>
   </main>
   <script src="./src/scripts/contactMenu.js"></script>
 </body>
-
 </html>
