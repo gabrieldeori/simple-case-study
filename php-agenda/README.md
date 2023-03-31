@@ -37,6 +37,7 @@ Essa agenda foi inspirado no aplicativo "Contatos" do meu smartphone (Infinix Ho
 ## Features à implementar
 - Resolver o preview da atual foto ao selecionada na edição ou cadastramento
 - Resolver o bug das fotos não estarem sendo deletadas
+- Remover metadados das fotos para melhorar privacidade
 - Melhorar a aparência do aplicativo
 - Implementar scroll pelas letras iniciais
 

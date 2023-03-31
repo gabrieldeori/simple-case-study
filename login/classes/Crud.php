@@ -4,7 +4,7 @@
   abstract class Crud extends DB {
     protected string $tabela;
 
-    abstract public function create();
+    abstract public function insert();
     abstract public function update($token, $id);
 
     public function findById($id){

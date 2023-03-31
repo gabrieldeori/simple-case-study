@@ -32,7 +32,7 @@
       basicInput('email', 'email', 'Digite seu email', 'src/img/id-card.png', '', true);
     ?>
     <button class="btn-blue" type="submit">Recuperar senha</button>
-    <a href="login.php">Fazer login</a>
+    <a href="index.php">Fazer login</a>
   </form>
 </body>
 </html>
