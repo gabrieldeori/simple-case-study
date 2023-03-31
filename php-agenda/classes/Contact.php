@@ -1,14 +1,14 @@
 <?php
   class Contact extends Crud {
-    private $name = "";
-    private $surname = "";
-    private $nick = "";
-    private $email = "";
-    private $number = "";
-    private $birthdate = "";
-    private $photo = "";
-    private $id = "";
-    private $old_photo = "";
+    public $name = "";
+    public $surname = "";
+    public $nick = "";
+    public $email = "";
+    public $number = "";
+    public $birthdate = "";
+    public $photo = "";
+    public $id = "";
+    public $old_photo = "";
 
     public function get() {
       return (object) [
@@ -19,6 +19,7 @@
         "number"=>$this->number,
         "birthdate"=>$this->birthdate,
         "photo"=>$this->photo,
+        "old_photo"=>$this->old_photo,
         "id"=>$this->id
         ];
       }
@@ -30,8 +31,8 @@
         return true;
     }
 
-    public function setOldPhoto($old) {
-      $this->old_photo = $old;
+    public function setOldPhoto() {
+      $this->old_photo = $this->photo;
     }
 
     public function setProfilepic($imageInfo) {
@@ -83,7 +84,11 @@
           }
         }
       } else {
-        $this->photo = "./src/img/profile.svg";
+        if ($this->old_photo != "") {
+          $this->photo = $this->old_photo;  
+        } else {
+          $this->photo = "./src/img/profile.svg";
+        }
       }
 
       $someError = $this->getError();

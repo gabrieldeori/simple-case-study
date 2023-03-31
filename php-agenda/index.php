@@ -8,7 +8,6 @@
 
   if(isset($_POST['inputSearch']) && $_POST['inputSearch'] !== "") {
     $contacts = [$contacts->findByAnything($_POST['inputSearch'])];
-    print_r($contacts);
   } else {
     $contacts = $contacts->findAllContacts();
   }

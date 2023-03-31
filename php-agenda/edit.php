@@ -5,24 +5,30 @@
 
   $contact = new Contact();
   $contact->set($_POST);
+  $contact->setOldPhoto();
   $contactValues = $contact->get();
+  
 
   if(isset($_POST['submit']) && !isset($_POST['delete'])) {
     $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
     if (isset($validatedFields[ERROR_VAL])) {
       $contact->setError($validatedFields);
     } else {
+      $contactValues = $contact->get();
       $validatedOtherFields = validateAnyField(['surname', 'birthdate', 'id']);
       $validatedProfilepic = validateProfilepic('profilepic');
       $contact->set($validatedFields);
       $contact->set($validatedOtherFields);
-      $contact->setOldPhoto($contactValues->photo);
-      $contact->setProfilepic($validatedProfilepic);
+      if ($validatedProfilepic['name'] != "") {
+        $contact->setProfilepic($validatedProfilepic);
+      }
       $registeredContact = $contact->registerContact();
     }
 
     if($contact->getError()) {
-      print_r($contact->getError());
+      foreach ($contact->getError() as $newError) {
+        echo "<p class=\"error_message\">".$newError."</p>";
+      }
     }
   }
 
@@ -55,7 +61,7 @@
   <main>
     <form class="edit" method="POST" enctype="multipart/form-data">
       <img class="profile-pic" alt=""
-        src=<?php echo "'$contactValues->photo'"; ?>
+        src=<?php if (!is_array($contactValues->photo)) { echo "'$contactValues->photo'"; } ?>
       >
 
       <input type="file" name="profilepic" id="profilepic">
@@ -99,6 +105,8 @@
         <button class="nice-btn-green" type="submit" name="submit">Salvar</button>
       </div>
       <input type="hidden" name="id" value=<?php echo"'$contactValues->id'" ?>>
+      <input type="hidden" name="old_photo" value=<?php echo"'$contactValues->old_photo'" ?>>
+      <input type="hidden" name="photo" value=<?php if (!is_array($contactValues->photo)) { echo "'$contactValues->photo'"; } ?>>
     </form>
     <form class="flex-row" method="POST">
       <input id="deleteInput" name="delete" type="text" placeholder="Digite 'deletar' sem aspas para deletar">
