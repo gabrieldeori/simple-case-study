@@ -111,11 +111,10 @@
     }
 
     public function findByAnything($value) {
-      $value = '%' . $value . '%';
+      $value = '"%' . $value . '%"';
       $this->setTable('contacts');
-      $this->fields = " name LIKE ? OR surname LIKE ? OR nick LIKE ?";
-      $this->propArray = (array) [$value, $value, $value];
-      return $this->find();
+      $this->fields = "name LIKE $value OR surname LIKE $value OR nick LIKE $value";
+      return $this->findAllAlt();
     }
 
     public function deleteContact() {

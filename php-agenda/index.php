@@ -14,11 +14,11 @@
 
   if (isset($_POST['orderBy'])) {
     usort($contacts, function($a, $b) {
-      return strcmp($a->{$_POST['orderBy']}, $b->{$_POST['orderBy']});
+      return strcasecmp($a->{$_POST['orderBy']}, $b->{$_POST['orderBy']});
     });
   } else {
     usort($contacts, function($a, $b) {
-      return strcmp($a->name, $b->name);
+      return strcasecmp($a->name, $b->name);
     });
   }
 ?>
@@ -46,30 +46,23 @@
       <a href="edit.php" class="nice-btn-green">Novo Contato</a>
       <form method="POST">
         <label for="inputSearch">Pesquisar:</label>
-        <input type="text" name="inputSearch" id="inputSearh">
+        <input type="text" name="inputSearch" id="inputSearch">
         <label for="orderBy">Ordenar por:</label>
         <select name="orderBy" id="orderBy">
-          <option
-            value="name"
-            <?php if(isset($_POST['orderBy']) && $_POST['orderBy'] === "name") echo "selected" ?>
-          >
-            Nome
-          </option>
-          <option
-            value="nick"
-            <?php if(isset($_POST['orderBy']) && $_POST['orderBy'] === "nick") echo "selected" ?>
-          >
-            nick
-          </option>
+          <option value="name" <?php if(isset($_POST['orderBy']) && $_POST['orderBy'] === "name") echo "selected"; ?>>Nome</option>
+          <option value="nick" <?php if(isset($_POST['orderBy']) && $_POST['orderBy'] === "nick") echo "selected"; ?>>Nick</option>
         </select>
         <button type="submit" name="submit_search" class="nice-btn-green">Procurar</button>
       </form>
     </div>
     <?php
-      if($contacts && count($contacts) != 0 && isset($contacts[0]->id)) {
-        foreach($contacts as $contact) {
+
+      if($contacts && count($contacts) != 0) {
+        foreach($contacts[0] as $contact) {
           createContact($contact);
         }
+      } else {
+        echo "<p>Nenhum contato encontrado.</p>";
       }
     ?>
   </main>

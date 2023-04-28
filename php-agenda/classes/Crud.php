@@ -35,8 +35,20 @@
       $this->error[ERROR_CRUD] = "Nada encontrado!";
     }
 
+    public function findAllAlt() {
+      $query = "SELECT * FROM $this->table WHERE $this->fields";
+      $sql = DB::instanciar();
+      $response = $sql->query($query);
+      $finded = $response->fetchAll();
+      if($finded) {
+        return $finded;
+      }
+      return false;
+      $this->error[ERROR_CRUD] = "Nada encontrado!";
+    }
+
     public function find() {
-      $sql = "SELECT * FROM $this->table WHERE $this->fields";
+      $sql = "SELECT * FROM $this->table WHERE ";
       $sql = DB::prepare($sql);
       $sql->execute($this->propArray);
       $finded = $sql->fetch();
