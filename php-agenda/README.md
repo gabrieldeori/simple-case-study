@@ -6,11 +6,6 @@ Essa agenda foi inspirado no aplicativo "Contatos" do meu smartphone (Infinix Ho
 
 - [Índice]()
 - [Links para projeto]()
-- [Manual de operação]()
-  - [Interação]()
-  - [Padrão de parâmetros]()
-  - [M+ M- MR MC - Memória secundária]()
-    - [Feature]()
 - [Bugs Conhecidos]()
 - [Features à implementar]()
 - [Responsividade]()
