@@ -7,7 +7,7 @@
   $contacts = new Contact();
 
   if(isset($_POST['inputSearch']) && $_POST['inputSearch'] !== "") {
-    $contacts = [$contacts->findByAnything($_POST['inputSearch'])];
+    $contacts = $contacts->findByAnything($_POST['inputSearch']);
   } else {
     $contacts = $contacts->findAllContacts();
   }
@@ -56,9 +56,8 @@
       </form>
     </div>
     <?php
-
       if($contacts && count($contacts) != 0) {
-        foreach($contacts[0] as $contact) {
+        foreach($contacts as $contact) {
           createContact($contact);
         }
       } else {

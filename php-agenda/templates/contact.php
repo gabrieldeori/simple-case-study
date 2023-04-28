@@ -17,6 +17,7 @@
       <div class="info">
         <h4 class="name"><?php echo "$name $surname" ?></h4>
         <h4 class="nick"><?php echo "$nick" ?></h4>
+        <h4 class="nick"><?php echo "$number" ?></h4>
       </div>
     </button>
     <nav>
