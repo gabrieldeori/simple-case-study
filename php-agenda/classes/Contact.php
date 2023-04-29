@@ -113,7 +113,13 @@
     public function findByAnything($value) {
       $value = '"%' . $value . '%"';
       $this->setTable('contacts');
-      $this->fields = "name LIKE $value OR surname LIKE $value OR nick LIKE $value";
+      $this->fields = "
+      name LIKE $value OR 
+      surname LIKE $value OR 
+      nick LIKE $value OR 
+      number LIKE $value OR 
+      email LIKE $value OR 
+      birthdate LIKE $value";
       return $this->findAllAlt();
     }
 
