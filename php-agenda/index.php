@@ -12,11 +12,11 @@
     $contacts = $contacts->findAllContacts();
   }
 
-  if (isset($_POST['orderBy'])) {
+  if (isset($_POST['orderBy']) && $_POST['orderBy'] !== "") {
     usort($contacts, function($a, $b) {
       return strcasecmp($a->{$_POST['orderBy']}, $b->{$_POST['orderBy']});
     });
-  } else {
+  } else if (is_array($contacts) && count($contacts) > 0) {
     usort($contacts, function($a, $b) {
       return strcasecmp($a->name, $b->name);
     });
