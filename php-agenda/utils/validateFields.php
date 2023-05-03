@@ -8,7 +8,7 @@
   function validateEachField(string $fieldName) {
     if (isset($_POST[$fieldName])) {
       $fieldValue = antiXSite($_POST[$fieldName]);
-      
+
       if (!empty($fieldValue)) {
         return $fieldValue;
       }
