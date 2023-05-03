@@ -59,11 +59,12 @@
   </header>
   <main>
     <form class="edit" method="POST" enctype="multipart/form-data">
-      <img class="profile-pic" alt=""
-        src=<?php if (!is_array($contactValues->photo)) { echo "'$contactValues->photo'"; } ?>
-      >
-
-      <input type="file" name="profilepic" id="profilepic">
+      <div class="profile-pic-wrapper">
+        <img class="profile-pic" alt=""
+          src=<?php if (!is_array($contactValues->photo)) { echo "'$contactValues->photo'"; } ?>
+        >
+        <input type="file" name="profilepic" id="profilepic">
+      </div>
 
       <div class="form-group">
         <label for="name"><i class="fa-solid fa-user"></i></label>

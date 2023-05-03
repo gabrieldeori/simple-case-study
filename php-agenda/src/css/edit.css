@@ -5,14 +5,27 @@ form.edit {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 0.5rem;
   padding: 0.8rem;
   max-width: 768px;
+}
+
+form.edit .profile-pic-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100px;
+}
+
+form.edit #profilepic {
+  display: block;
 }
 
 form.edit .profile-pic {
   border-radius: 0.75rem;
   margin-bottom: 0.2rem;
-  width: 100%;
+  max-width: 100%;
 }
 
 #profilepic {
