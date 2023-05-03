@@ -2,6 +2,9 @@
 Agenda em PHP tem por objetivo a primeira prática em PHP.
 Essa agenda foi inspirado no aplicativo "Contatos" do meu smartphone (Infinix Hot 11s).
 
+## Vídeo
+Vídeo do APP: https://youtu.be/I6XQmmWA0f0
+
 ## Índice
 
 - [Índice]()
@@ -19,7 +22,7 @@ Essa agenda foi inspirado no aplicativo "Contatos" do meu smartphone (Infinix Ho
 
 - Clique no GIF abaixo para acessar o vídeo completo.
 
-  [![Link Projeto](./src/img/PHPAgenda.gif)](https://youtu.be/jeXMuAbqWuA)
+  [![Link Projeto](./src/img/PHPAgenda.gif)](https://youtu.be/I6XQmmWA0f0)
 
 - [Link para essa documentação](https://github.com/gabrieldeori/simple-case-study/tree/main/php-agenda/)
 
