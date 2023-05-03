@@ -16,3 +16,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+main {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  max-width: 100%;
+}

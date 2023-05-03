@@ -7,7 +7,6 @@
   $contact->set($_POST);
   $contact->setOldPhoto();
   $contactValues = $contact->get();
-  
 
   if(isset($_POST['submit']) && !isset($_POST['delete'])) {
     $validatedFields = validateAtLeastOneField(["name", "nick", "number", "email"]);
